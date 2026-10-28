@@ -1,0 +1,1190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]{display:none!important}</style><link rel="icon" type="image/png" href="logo-192.png"><link rel="apple-touch-icon" href="logo-512.png"><meta name="theme-color" content="#1F3B57"><meta property="og:type" content="website"><meta property="og:site_name" content="Medical Companion"><meta property="og:title" content="First Aid MCQ Bank · Medical Companion"><meta property="og:description" content="Free exam-style MCQs for every section of First Aid for the USMLE Step 1 2026, by Medical Companion. Explanations for every option, progress tracker, flags and USMLE-style mock exams."><meta property="og:url" content="https://medicalcompanion.github.io/"><meta property="og:image" content="https://medicalcompanion.github.io/logo-512.png"><meta name="twitter:card" content="summary">
+<title>First Aid MCQ Bank</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Free exam-style MCQs for every section of First Aid for the USMLE Step 1 2026, by Medical Companion. Explanations for every option, progress tracker, flags and USMLE-style mock exams.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Figtree:wght@400;500;600;700&family=Young+Serif&display=swap">
+<style>
+/* Layout: a shelf of system folders (thumb-tab colours like the book) → folder of subject files → one-question exam panel */
+:root{
+  --paper:#EDF1F3; --card:#FFFFFF; --card-2:#F5F7F8; --ink:#13202B; --muted:#56656F; --rule:#D3DBE0;
+  --ok:#1C7A4B; --ok-soft:#E0F2E7; --bad:#C2410C; --bad-soft:#FCEBDD; --focus:#1B6FD1;
+  --lift:0%; --shadow:0 1px 2px rgba(19,32,43,.06),0 6px 20px rgba(19,32,43,.06);
+  --f-display:"Young Serif",Georgia,"Times New Roman",serif;
+  --f-body:"Figtree",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"DM Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --sys:#2D4A9A;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0D1318; --card:#151D24; --card-2:#1A242C; --ink:#E3EAEE; --muted:#97A6B0; --rule:#29353F;
+  --ok:#4DC48B; --ok-soft:#12301F; --bad:#F2924F; --bad-soft:#3A2314; --focus:#7DB3FF;
+  --lift:40%; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0D1318; --card:#151D24; --card-2:#1A242C; --ink:#E3EAEE; --muted:#97A6B0; --rule:#29353F;
+  --ok:#4DC48B; --ok-soft:#12301F; --bad:#F2924F; --bad-soft:#3A2314; --focus:#7DB3FF;
+  --lift:40%; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25); color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.tint{--acc:color-mix(in oklab,var(--sys),white var(--lift));--acc-soft:color-mix(in oklab,var(--acc) 13%,var(--card));--acc-line:color-mix(in oklab,var(--acc) 35%,var(--rule))}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1040px;margin:0 auto}
+.skip{position:absolute;left:-999px}
+.skip:focus{left:16px;top:8px;background:var(--card);padding:8px 12px;z-index:20}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in oklab,var(--paper) 88%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px))) 0 calc(-1*max(16px,env(safe-area-inset-right,0px)))}
+.bar .wrap{display:flex;align-items:center;gap:12px;padding:10px max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px));min-height:52px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;letter-spacing:.01em;min-width:0}
+.brand .mark{display:grid;grid-template-columns:repeat(3,6px);gap:2px}
+.brand .mark i{width:6px;height:14px;border-radius:2px}
+.crumbs{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:14px;color:var(--muted);min-width:0;flex:1}
+.crumbs a{text-decoration:none;color:var(--muted)}
+.crumbs a:hover{color:var(--ink);text-decoration:underline}
+.crumbs .here{color:var(--ink);font-weight:600}
+.crumbs .sep{opacity:.5}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;white-space:nowrap}
+.btn:hover{border-color:var(--ink)}
+.btn.solid{background:var(--acc,var(--ink));border-color:transparent;color:#fff}
+:root[data-theme="dark"] .btn.solid{color:#0D1318}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn.solid{color:#0D1318}}
+.btn[disabled]{opacity:.45;cursor:default}
+.sync{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
+.sync::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--rule);border:1px solid var(--muted)}
+.sync[data-state="synced"]::before{background:var(--ok);border-color:var(--ok)}
+.sync[data-state="syncing"]::before{background:var(--acc,var(--focus));border-color:transparent}
+.sync[data-state="error"]::before{background:var(--bad);border-color:var(--bad)}
+
+/* type */
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0}
+h1,h2,h3{text-wrap:balance;margin:0}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(34px,6vw,56px);line-height:1.05;letter-spacing:-.01em}
+h2{font-family:var(--f-display);font-weight:400;font-size:clamp(22px,3.2vw,28px);line-height:1.2}
+.lead{font-size:18px;color:var(--muted);max-width:62ch;margin:0}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+
+/* hero */
+.hero{display:grid;gap:14px;padding-block:40px 28px}
+.stats{display:flex;flex-wrap:wrap;gap:8px 22px;font-family:var(--f-mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.stats b{color:var(--ink);font-weight:500}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-size:13px;border:1px solid var(--rule);border-radius:999px;padding:3px 10px;color:var(--muted);background:var(--card)}
+
+/* continue */
+.continue{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:var(--card);border:1px solid var(--acc-line);border-radius:14px;padding:14px 16px;text-decoration:none;box-shadow:var(--shadow)}
+.continue .k{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc)}
+.continue .t{font-weight:600;flex:1;min-width:0}
+
+/* shelf of folders */
+.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:34px 0 14px;padding-top:14px;border-top:1px solid var(--rule)}
+.section-head .meta{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.shelf{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:26px 16px}
+.folder{position:relative;display:flex;flex-direction:column;gap:10px;text-decoration:none;background:var(--card);border:1px solid var(--rule);border-radius:4px 12px 12px 12px;padding:16px 16px 14px;margin-top:12px;min-height:150px;transition:transform .15s ease,box-shadow .15s ease,border-color .15s}
+.folder::before{content:"";position:absolute;left:-1px;top:-13px;height:13px;width:46%;background:var(--card);border:1px solid var(--rule);border-bottom:0;border-radius:8px 14px 0 0}
+.folder::after{content:"";position:absolute;left:12px;top:-6px;height:4px;width:calc(46% - 30px);border-radius:3px;background:var(--acc)}
+.folder:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:var(--acc-line)}
+.folder:hover::before{border-color:var(--acc-line)}
+.folder .name{font-family:var(--f-display);font-size:21px;line-height:1.2}
+.folder .sub{font-size:13px;color:var(--muted)}
+.folder .ff{margin-top:auto;display:grid;gap:8px;padding-top:10px;border-top:1px solid var(--rule)}
+.folder .row{display:flex;justify-content:space-between;align-items:center;gap:8px;font-family:var(--f-mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.folder.dim .name{color:var(--muted)}
+.meter{height:5px;border-radius:99px;background:var(--card-2);overflow:hidden;border:1px solid var(--rule)}
+.meter i{display:block;height:100%;background:var(--acc);border-radius:99px}
+.pill{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;border-radius:99px;padding:2px 8px;border:1px solid var(--rule);color:var(--muted);white-space:nowrap}
+.pill.live{border-color:var(--acc-line);color:var(--acc);background:var(--acc-soft)}
+
+/* folder view (subject files) */
+.files{display:grid;gap:10px}
+.file{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:14px 16px;text-decoration:none;transition:border-color .15s,box-shadow .15s}
+a.file:hover{border-color:var(--acc-line);box-shadow:var(--shadow)}
+.file .ic{width:34px;height:42px;border-radius:4px 10px 4px 4px;background:var(--acc-soft);border:1px solid var(--acc-line);display:grid;place-items:center;font-family:var(--f-mono);font-size:11px;color:var(--acc);font-weight:500}
+.file .t{font-weight:600;font-size:17px}
+.file .d{font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 14px;font-variant-numeric:tabular-nums}
+.file .r{display:grid;justify-items:end;gap:6px;min-width:96px}
+.file .r .meter{width:96px}
+.file.soon{opacity:.62}
+.file > div{min-width:0}
+
+/* quiz */
+.rounds{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+.round{display:grid;gap:6px;text-align:left;background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:12px 14px;cursor:pointer}
+.round:hover{border-color:var(--acc-line)}
+.round[aria-current="true"]{border-color:var(--acc);box-shadow:inset 0 0 0 1px var(--acc)}
+.round .n{font-family:var(--f-mono);font-size:12px;color:var(--acc);letter-spacing:.08em}
+.round .tt{font-size:14px;font-weight:600;line-height:1.3}
+.round .st{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.overall{font-family:var(--f-mono);font-size:13px;color:var(--muted);margin:12px 0 0}
+
+.panel{background:var(--card);border:1px solid var(--rule);border-radius:16px;margin-top:22px;box-shadow:var(--shadow);scroll-margin-top:calc(70px + env(safe-area-inset-top,0px))}
+.panel-head{display:flex;justify-content:space-between;align-items:flex-end;gap:10px 16px;flex-wrap:wrap;padding:18px 20px 14px;border-bottom:1px solid var(--rule)}
+.panel-head > div{min-width:0}
+.panel-head h2{font-size:22px;margin-top:4px}
+.rstat{font-family:var(--f-mono);font-size:13px;color:var(--muted);margin:0}
+.qmap{border-bottom:1px solid var(--rule);padding:10px 20px}
+.qmap summary{cursor:pointer;font-size:14px;font-weight:600;color:var(--muted);list-style:none;display:flex;align-items:center;gap:6px}
+.qmap summary::-webkit-details-marker{display:none}
+.qmap summary::after{content:"⌄";font-size:16px;line-height:1;transform:translateY(-3px)}
+.qmap[open] summary::after{transform:rotate(180deg) translateY(-2px)}
+.grid{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;margin:10px 0 8px;max-width:520px}
+.cell{aspect-ratio:1;max-width:100%;border-radius:8px;border:1px solid var(--rule);background:var(--card-2);font-family:var(--f-mono);font-size:12px;cursor:pointer;display:grid;place-items:center;padding:0}
+.cell.ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.cell.bad{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
+.cell[aria-current="true"]{box-shadow:0 0 0 2px var(--acc);border-color:var(--acc)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:0}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px;border:1px solid var(--rule)}
+.legend .l-ok{background:var(--ok-soft);border-color:var(--ok)}
+.legend .l-bad{background:var(--bad-soft);border-color:var(--bad)}
+.qbody{padding:20px}
+.qnum{font-family:var(--f-mono);font-size:12px;color:var(--acc);letter-spacing:.1em;margin:0 0 8px}
+.stem{font-size:18px;line-height:1.6;margin:0 0 18px;max-width:68ch}
+.opts{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.opt{width:100%;display:grid;grid-template-columns:30px 1fr auto;align-items:start;gap:12px;text-align:left;background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:12px 14px;cursor:pointer;transition:border-color .12s,background .12s}
+.opt:hover:not([disabled]){border-color:var(--acc);background:var(--acc-soft)}
+.opt[disabled]{cursor:default}
+.let{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;font-family:var(--f-mono);font-size:13px;font-weight:500;border:1px solid var(--rule);background:var(--card-2)}
+.otxt{padding-top:2px;min-width:0}
+.mk{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding-top:6px;white-space:nowrap}
+.why{display:none;font-size:14.5px;color:var(--muted);line-height:1.55;padding:8px 14px 2px 56px}
+.answered .why{display:block}
+li.is-ok .opt{border-color:var(--ok);background:var(--ok-soft)}
+li.is-ok .let{background:var(--ok);border-color:var(--ok);color:var(--card)}
+li.is-ok .mk{color:var(--ok)}
+li.is-bad .opt{border-color:var(--bad);background:var(--bad-soft)}
+li.is-bad .let{background:var(--bad);border-color:var(--bad);color:var(--card)}
+li.is-bad .mk{color:var(--bad)}
+li.is-ok .why{color:var(--ink)}
+.feedback{margin-top:18px;padding:14px 16px;border-radius:12px;background:var(--card-2);border:1px solid var(--rule);display:grid;gap:4px}
+.feedback .v{font-weight:700}
+.feedback .v.ok{color:var(--ok)} .feedback .v.bad{color:var(--bad)}
+.feedback .src{font-family:var(--f-mono);font-size:12.5px;color:var(--muted)}
+.qnav{display:flex;justify-content:space-between;gap:10px;padding:14px 20px;border-top:1px solid var(--rule)}
+.hint{font-size:12px;color:var(--muted);text-align:center;margin:10px 0 0}
+.summary{padding:26px 20px;display:grid;gap:14px;justify-items:start}
+.score{font-family:var(--f-display);font-size:52px;line-height:1}
+.score small{font-family:var(--f-mono);font-size:15px;color:var(--muted);margin-left:8px}
+.missed{display:flex;flex-wrap:wrap;gap:6px}
+.share{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:18px 20px;margin-top:22px}
+.share > div{min-width:0}
+.share h3{font-family:var(--f-display);font-weight:400;font-size:22px}
+.share p{margin:4px 0 0;color:var(--muted);font-size:14px}
+.share .acts{display:flex;gap:8px;flex-wrap:wrap}
+.foot{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;margin-top:22px;padding-top:16px;border-top:1px solid var(--rule)}
+.about{font-size:13px;color:var(--muted);max-width:75ch;margin:14px 0 0}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:999px;font-size:14px;font-weight:600;z-index:30;box-shadow:var(--shadow)}
+.empty{background:var(--card);border:1px dashed var(--rule);border-radius:16px;padding:28px 20px;margin-top:22px;display:grid;gap:10px;justify-items:start}
+.loading{padding:40px 0;color:var(--muted)}
+@media (max-width:560px){
+  .grid{grid-template-columns:repeat(5,1fr)}
+  .file{grid-template-columns:auto 1fr}
+  .file .r{grid-column:1 / -1;justify-items:stretch;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:12px}
+  .file .r .pill{justify-self:start}
+  .file .r .meter{width:auto}
+  .share{grid-template-columns:1fr}
+  .stem{font-size:17px}
+  .why{padding-left:14px}
+  .qbody,.panel-head,.qmap,.qnav{padding-left:16px;padding-right:16px}
+  .brand .wordmark{display:none}
+}
+/* brand, channel, tracker */
+:root{--logo:url("data:image/webp;base64,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")}
+.logo{display:inline-block;flex:none;width:34px;height:34px;border-radius:50%;background:var(--logo) center/cover no-repeat}
+.brand .wordmark{display:grid;line-height:1.15;font-size:15px}
+.brand .wordmark small{font-weight:500;font-size:12px;color:var(--muted);letter-spacing:0}
+.bar .wrap{flex-wrap:wrap}
+.crumbs:empty{display:none}
+.brand{margin-right:auto}
+.crumbs:not(:empty){margin-right:auto}
+.tbar{display:block;min-width:0}
+.tbar .meter{display:block}
+.hub-cards{margin-bottom:12px}
+.btn svg{width:16px;height:16px;flex:none}
+.btn[aria-current="page"]{border-color:var(--ink)}
+.hub-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px}
+.channel,.mini{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:14px 16px;text-decoration:none;min-width:0;transition:border-color .15s,box-shadow .15s}
+.channel:hover,.mini:hover{border-color:var(--acc-line);box-shadow:var(--shadow)}
+.channel .logo{width:56px;height:56px}
+.channel .t,.mini .t{flex:1;min-width:0;display:grid;gap:3px}
+.channel b,.mini b{font-size:16px}
+.channel small,.mini small{color:var(--muted);font-size:13.5px}
+.mini .meter{margin-top:6px}
+.go{font-weight:600;font-size:14px;white-space:nowrap;color:var(--acc)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:10px}
+.kpi{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:14px 16px;display:grid;gap:6px;min-width:0}
+.kpi .v{font-family:var(--f-display);font-size:32px;line-height:1;font-variant-numeric:tabular-nums}
+.kpi .v small{font-family:var(--f-mono);font-size:13px;color:var(--muted);margin-left:6px}
+.kpi .l{font-size:13px;color:var(--muted)}
+.ttable{background:var(--card);border:1px solid var(--rule);border-radius:14px;overflow:hidden}
+.trow{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1.5fr) minmax(0,1.6fr);align-items:center;gap:14px;padding:12px 16px;border-top:1px solid var(--rule);text-decoration:none;color:inherit}
+.trow:first-child{border-top:0}
+a.trow:hover{background:var(--acc-soft)}
+.trow.thead{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-block:10px;background:var(--card-2)}
+.trow.group{background:var(--card-2);padding-block:9px;grid-template-columns:1fr}
+.trow.group .tname{font-size:13px;font-weight:700;letter-spacing:.02em}
+.tname{display:flex;align-items:center;gap:10px;font-weight:600;min-width:0}
+.tname > span{min-width:0;overflow-wrap:anywhere}
+.chip{width:10px;height:10px;border-radius:3px;background:var(--acc);flex:none}
+.tmeta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.tnum{font-family:var(--f-mono);font-size:13px;font-variant-numeric:tabular-nums;color:var(--muted);text-align:right;white-space:nowrap}
+.tnum b{color:var(--ink);font-weight:500}
+.tnum .sm,.tnote{font-style:normal}
+.tnum .sm{display:none}
+.tnote{font-size:13px;color:var(--muted)}
+.acc-good{color:var(--ok)!important}
+.acc-low{color:var(--bad)!important}
+.trow.soon .tname{color:var(--muted);font-weight:500}
+.seg{display:inline-flex;gap:4px;flex-wrap:wrap;background:var(--card);border:1px solid var(--rule);border-radius:999px;padding:3px}
+.seg button{border:0;background:none;border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600;cursor:pointer;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.weak{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:10px}
+.site-foot{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:36px;padding-top:18px;border-top:1px solid var(--rule);font-size:14px;color:var(--muted)}
+.site-foot .logo{width:28px;height:28px}
+.site-foot a{color:var(--ink);font-weight:600}
+:root{--flag:#B45309;--flag-soft:#FDF1DC;--exbar:#1F3B57}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--flag:#F2B54B;--flag-soft:#33260F;--exbar:#16293C}}
+:root[data-theme="dark"]{--flag:#F2B54B;--flag-soft:#33260F;--exbar:#16293C}
+.hub-cards{grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.links{display:flex;gap:8px 20px;flex-wrap:wrap;margin:4px 0 0;font-weight:600;font-size:14px}
+.links a{color:var(--ink)}
+.qtop{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0 0 10px}
+.qtop .qnum{margin:0}
+.flag{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:5px 12px;font-size:13px;font-weight:600;cursor:pointer;color:var(--muted);white-space:nowrap}
+.flag svg{width:15px;height:15px;flex:none}
+.flag[aria-pressed="true"]{color:var(--flag);border-color:var(--flag);background:var(--flag-soft)}
+.cell{position:relative}
+.cell.fl::after{content:"";position:absolute;top:3px;right:3px;width:7px;height:7px;border-radius:50%;background:var(--flag)}
+.legend .l-fl{background:var(--flag);border-color:var(--flag);border-radius:50%}
+li.is-sel .opt{border-color:var(--ink);background:var(--card-2);box-shadow:inset 0 0 0 1px var(--ink)}
+li.is-sel .let{background:var(--ink);border-color:var(--ink);color:var(--card)}
+li.is-sel .mk{color:var(--ink)}
+.cell.done{background:var(--card-2);border-color:var(--ink);color:var(--ink)}
+li.is-x .otxt{text-decoration:line-through;opacity:.45}
+li.is-x .let{opacity:.45}
+.orow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px;align-items:stretch}
+.xbtn{width:36px;border:1px solid var(--rule);background:var(--card);border-radius:10px;cursor:pointer;color:var(--muted);font-size:14px}
+.xbtn:hover{border-color:var(--ink);color:var(--ink)}
+.btn.warn,.btn.solid.warn{background:var(--card);color:var(--bad);border-color:var(--bad)}
+.mocks{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px}
+.mock{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:var(--card);border:1px solid var(--acc-line);border-left:4px solid var(--acc);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+.mocks .mock{margin-bottom:0}
+.mock .t{flex:1;min-width:0;display:grid;gap:3px}
+.mock .eyebrow{color:var(--acc)}
+.mock b{font-family:var(--f-display);font-weight:400;font-size:21px}
+.mock small{color:var(--muted);font-size:13.5px}
+.builder{display:grid;gap:12px}
+.bstep{background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:16px;display:grid;gap:12px;min-width:0}
+.bstep h3{font-size:16px;font-weight:700}
+.bsys{display:grid;gap:10px}
+.bgroup{border:1px solid var(--rule);border-radius:12px;padding:8px 14px 12px;margin:0;min-width:0}
+.bgroup legend{padding:0 6px;font-weight:700}
+.bgroup legend label,.bsub{display:inline-flex;align-items:center;gap:8px;cursor:pointer}
+.bsubs{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:4px}
+.bsub .mono{font-size:12px;color:var(--muted)}
+.builder input[type=checkbox]{width:18px;height:18px;margin:0;accent-color:var(--acc)}
+.bnote{font-size:13px;color:var(--muted);margin:0}
+.bgo{position:sticky;bottom:calc(10px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:var(--card);border:1px solid var(--acc-line);border-radius:14px;padding:14px 16px;box-shadow:var(--shadow);z-index:3}
+.bgo p{margin:0;min-width:0;flex:1}
+.bwarn{color:var(--bad)}
+.seg button .mono{font-size:11px;opacity:.75;margin-left:3px}
+.flist{display:grid;gap:10px}
+.file.flagrow{border-style:dashed}
+.ic.flagic{background:var(--flag-soft);border-color:var(--flag);color:var(--flag)}
+.ic.flagic svg,.flagcount svg{width:14px;height:14px}
+.flagcount{display:inline-flex;align-items:center;gap:6px;color:var(--flag)}
+.fitem{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:14px 16px;display:grid;gap:8px}
+.fitem p{margin:0;max-width:75ch}
+.fmeta{display:flex;gap:12px;font-size:12.5px;color:var(--muted);font-family:var(--f-mono)}
+.facts{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.exhead{display:grid;gap:4px;padding-block:28px 0}
+.exhead h2{font-size:clamp(22px,3.4vw,30px)}
+.exam{background:var(--card);border:1px solid var(--rule);border-radius:16px;overflow:hidden;margin-top:16px;box-shadow:var(--shadow);scroll-margin-top:calc(70px + env(safe-area-inset-top,0px))}
+.exbar{display:flex;align-items:center;gap:8px 12px;flex-wrap:wrap;background:var(--exbar);color:#fff;padding:10px 14px}
+.exitem{font-weight:700;font-variant-numeric:tabular-nums}
+.exbar .btn,.flag.onbar{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.32);color:#fff}
+.exbar .btn:hover{border-color:#fff}
+.flag.onbar[aria-pressed="true"]{background:#F2B54B;border-color:#F2B54B;color:#1F2A33}
+.exarrows{display:inline-flex;gap:6px}
+.exarrows .btn{padding:6px 12px}
+.exclock{margin-left:auto;display:grid;justify-items:end;line-height:1.15}
+.exclock small{font-size:11px;opacity:.75;letter-spacing:.04em;text-transform:uppercase}
+.exclock b{font-family:var(--f-mono);font-size:18px;font-variant-numeric:tabular-nums}
+.exclock.low b{color:#FFB39C}
+.exbar .btn.warn{background:#fff;color:#B42318;border-color:#fff}
+.exbody{display:grid;grid-template-columns:200px minmax(0,1fr)}
+.exnav{border-right:1px solid var(--rule);padding:12px;background:var(--card-2)}
+.exnav-h{font-family:var(--f-mono);font-size:12px;color:var(--muted);margin:0 0 8px}
+.exgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
+.exgrid .cell{font-size:11.5px}
+.exq{min-width:0}
+.exnav-sm{display:none}
+@media (max-width:760px){
+  .exbody{grid-template-columns:minmax(0,1fr)}
+  .exnav{display:none}
+  .exnav-sm{display:block}
+}
+@media (max-width:640px){
+  .trow{grid-template-columns:minmax(0,1fr);gap:8px}
+  .trow.thead{display:none}
+  .tmeta{display:flex;flex-wrap:wrap;gap:4px 16px}
+  .tnum{text-align:left}
+  .tnum .sm{display:inline}
+}
+@media (max-width:560px){
+  .crumbs{order:9;flex-basis:100%}
+  .brand .wordmark{display:none}
+  .sync .lbl{display:none}
+  .btn.yt .ytl,.btn.sharebtn .shl{display:none}
+  .exarrows{display:none}
+  .exend{margin-left:auto}
+  .exclock{order:5;flex-basis:100%;display:flex;justify-content:space-between;align-items:baseline;margin-left:0;border-top:1px solid rgba(255,255,255,.18);padding-top:6px}
+  .bar .btn{padding:7px 11px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+
+</head>
+<body>
+<a class="skip" href="#app">Skip to content</a>
+<header class="bar tint" id="bar"><div class="wrap">
+  <a class="brand" href="#" aria-label="Medical Companion First Aid MCQ Bank home"><span class="logo" aria-hidden="true"></span><span class="wordmark"><span>Medical Companion</span><small>First Aid MCQ Bank</small></span></a>
+  <nav class="crumbs" id="crumbs" aria-label="Breadcrumb"></nav>
+  <span class="sync" id="sync" data-state="local" title="Progress is saved in this browser"><span class="lbl">Saved here</span></span>
+  <a class="btn" id="navProgress" href="#progress">Progress</a>
+  <a class="btn" id="navTest" href="#test">Tests</a>
+  <a class="btn yt" href="https://www.youtube.com/@medicalcompaniondoctor" target="_blank" rel="noopener" aria-label="Medical Companion on YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 8.2v7.6l6.2-3.8z" fill="currentColor"/></svg><span class="ytl">YouTube</span></a>
+  <button class="btn sharebtn" id="shareTop" type="button" aria-label="Copy a link to this page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="shl">Share</span></button>
+</div></header>
+<main class="wrap" id="app" tabindex="-1"><p class="loading">Loading…</p></main>
+<footer class="site-foot wrap"><span class="logo" aria-hidden="true"></span><span>Made by <b>Medical Companion</b>. Watch the First Aid lecture series on <a href="https://www.youtube.com/@medicalcompaniondoctor" target="_blank" rel="noopener">YouTube ↗</a></span></footer>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script id="registry" type="application/json">{"base":"https://medicalcompanion.github.io/","systems":[{"id":"cardiovascular","name":"Cardiovascular","group":"systems","color":"#9B1B30","pages":[283,328],"subjects":[{"id":"cardiovascular-embryology","name":"Embryology","pages":[284,286],"count":40,"ext":null,"ready":true,"planned":40,"v":"b12e1c63","rq":[20,20]},{"id":"cardiovascular-anatomy","name":"Anatomy","pages":[287,287],"count":20,"ext":null,"ready":true,"planned":20,"v":"4d782952","rq":[20]},{"id":"cardiovascular-physiology","name":"Physiology","pages":[288,299],"count":160,"ext":null,"ready":true,"planned":160,"v":"7209bee0","rq":[20,20,20,20,20,20,20,20]},{"id":"cardiovascular-pathology","name":"Pathology","pages":[300,320],"count":200,"ext":null,"ready":true,"planned":200,"v":"25543404","rq":[20,20,20,20,20,20,20,20,20,20]},{"id":"cardiovascular-pharmacology","name":"Pharmacology","pages":[321,328],"count":100,"ext":null,"ready":true,"planned":100,"v":"185208c4","rq":[20,20,20,20,20]}]},{"id":"endocrine","name":"Endocrine","group":"systems","color":"#624681","pages":[329,362],"subjects":[{"id":"endocrine-embryology","name":"Embryology","pages":[330,330],"count":20,"ext":null,"ready":false},{"id":"endocrine-anatomy","name":"Anatomy","pages":[331,331],"count":20,"ext":null,"ready":false},{"id":"endocrine-physiology","name":"Physiology","pages":[332,341],"count":120,"ext":null,"ready":false},{"id":"endocrine-pathology","name":"Pathology","pages":[342,357],"count":200,"ext":null,"ready":false},{"id":"endocrine-pharmacology","name":"Pharmacology","pages":[358,362],"count":60,"ext":null,"ready":false}]},{"id":"gastrointestinal","name":"Gastrointestinal","group":"systems","color":"#A15C07","pages":[363,408],"subjects":[{"id":"gastrointestinal-embryology","name":"Embryology","pages":[364,366],"count":40,"ext":null,"ready":false},{"id":"gastrointestinal-anatomy","name":"Anatomy","pages":[367,377],"count":140,"ext":null,"ready":false},{"id":"gastrointestinal-physiology","name":"Physiology","pages":[378,382],"count":60,"ext":null,"ready":false},{"id":"gastrointestinal-pathology","name":"Pathology","pages":[383,404],"count":200,"ext":null,"ready":false},{"id":"gastrointestinal-pharmacology","name":"Pharmacology","pages":[405,408],"count":60,"ext":null,"ready":false}]},{"id":"hemeonc","name":"Hematology & Oncology","group":"systems","color":"#7A1F52","pages":[409,448],"subjects":[{"id":"hemeonc-embryology","name":"Embryology","pages":[410,411],"count":40,"ext":null,"ready":false},{"id":"hemeonc-anatomy","name":"Anatomy","pages":[412,415],"count":60,"ext":null,"ready":false},{"id":"hemeonc-physiology","name":"Physiology","pages":[416,419],"count":60,"ext":null,"ready":false},{"id":"hemeonc-pathology","name":"Pathology","pages":[420,439],"count":200,"ext":null,"ready":false},{"id":"hemeonc-pharmacology","name":"Pharmacology","pages":[440,448],"count":120,"ext":null,"ready":false}]},{"id":"msk","name":"Musculoskeletal, Skin & Connective Tissue","group":"systems","color":"#7B5A2E","pages":[449,498],"subjects":[{"id":"msk-anatomy-physiology","name":"Anatomy & Physiology","pages":[450,461],"count":160,"ext":null,"ready":false},{"id":"msk-pathology","name":"Pathology","pages":[462,480],"count":200,"ext":null,"ready":false},{"id":"msk-dermatology","name":"Dermatology","pages":[481,494],"count":180,"ext":null,"ready":false},{"id":"msk-pharmacology","name":"Pharmacology","pages":[495,498],"count":60,"ext":null,"ready":false}]},{"id":"neuro","name":"Neurology & Special Senses","group":"systems","color":"#2D4A9A","pages":[499,568],"subjects":[{"id":"neuro-embryology","name":"Embryology","pages":[500,502],"count":40,"ext":null,"ready":false},{"id":"neuro-anatomy-physiology","name":"Anatomy & Physiology","pages":[503,523],"count":200,"ext":null,"ready":false},{"id":"neuro-pathology","name":"Pathology","pages":[524,546],"count":200,"ext":null,"ready":false},{"id":"neuro-otology","name":"Otology","pages":[547,548],"count":40,"ext":null,"ready":false},{"id":"neuro-ophthalmology","name":"Ophthalmology","pages":[549,559],"count":140,"ext":null,"ready":false},{"id":"neuro-pharmacology","name":"Pharmacology","pages":[560,568],"count":120,"ext":null,"ready":false}]},{"id":"psychiatry","name":"Psychiatry","group":"systems","color":"#4B6676","pages":[569,594],"subjects":[{"id":"psychiatry-psychology","name":"Psychology","pages":[570,572],"count":40,"ext":null,"ready":false},{"id":"psychiatry-pathology","name":"Pathology","pages":[573,589],"count":200,"ext":null,"ready":false},{"id":"psychiatry-pharmacology","name":"Pharmacology","pages":[590,594],"count":60,"ext":null,"ready":false}]},{"id":"renal","name":"Renal","group":"systems","color":"#B0571A","pages":[595,628],"subjects":[{"id":"renal-embryology","name":"Embryology","pages":[596,597],"count":40,"ext":null,"ready":false},{"id":"renal-anatomy","name":"Anatomy","pages":[598,598],"count":20,"ext":null,"ready":false},{"id":"renal-physiology","name":"Physiology","pages":[599,611],"count":160,"ext":null,"ready":false},{"id":"renal-pathology","name":"Pathology","pages":[612,624],"count":160,"ext":null,"ready":false},{"id":"renal-pharmacology","name":"Pharmacology","pages":[625,628],"count":60,"ext":null,"ready":false}]},{"id":"reproductive","name":"Reproductive","group":"systems","color":"#A23A6E","pages":[629,676],"subjects":[{"id":"reproductive-embryology","name":"Embryology","pages":[630,641],"count":160,"ext":null,"ready":false},{"id":"reproductive-anatomy","name":"Anatomy","pages":[642,646],"count":60,"ext":null,"ready":false},{"id":"reproductive-physiology","name":"Physiology","pages":[647,654],"count":100,"ext":null,"ready":false},{"id":"reproductive-pathology","name":"Pathology","pages":[655,672],"count":200,"ext":null,"ready":false},{"id":"reproductive-pharmacology","name":"Pharmacology","pages":[673,676],"count":60,"ext":null,"ready":false}]},{"id":"respiratory","name":"Respiratory","group":"systems","color":"#1B6F8F","pages":[677,706],"subjects":[{"id":"respiratory-embryology","name":"Embryology","pages":[678,679],"count":40,"ext":null,"ready":false},{"id":"respiratory-anatomy","name":"Anatomy","pages":[680,681],"count":40,"ext":null,"ready":false},{"id":"respiratory-physiology","name":"Physiology","pages":[682,689],"count":100,"ext":null,"ready":false},{"id":"respiratory-pathology","name":"Pathology","pages":[690,703],"count":180,"ext":null,"ready":false},{"id":"respiratory-pharmacology","name":"Pharmacology","pages":[704,706],"count":40,"ext":null,"ready":false}]},{"id":"biochemistry","name":"Biochemistry","group":"general","color":"#2B62A8","pages":[31,92],"subjects":[{"id":"biochemistry-molecular","name":"Molecular","pages":[32,43],"count":160,"ext":null,"ready":false},{"id":"biochemistry-cellular","name":"Cellular","pages":[44,49],"count":80,"ext":null,"ready":false},{"id":"biochemistry-lab-techniques","name":"Laboratory Techniques","pages":[50,53],"count":60,"ext":null,"ready":false},{"id":"biochemistry-genetics","name":"Genetics","pages":[54,62],"count":120,"ext":null,"ready":false},{"id":"biochemistry-nutrition","name":"Nutrition","pages":[63,70],"count":100,"ext":null,"ready":false},{"id":"biochemistry-metabolism","name":"Metabolism","pages":[71,92],"count":200,"ext":null,"ready":false}]},{"id":"immunology","name":"Immunology","group":"general","color":"#0E7472","pages":[93,120],"subjects":[{"id":"immunology-lymphoid","name":"Lymphoid Structures","pages":[94,96],"count":40,"ext":null,"ready":false},{"id":"immunology-cellular","name":"Cellular Components","pages":[97,101],"count":60,"ext":null,"ready":false},{"id":"immunology-responses","name":"Immune Responses","pages":[102,117],"count":200,"ext":null,"ready":false},{"id":"immunology-immunosuppressants","name":"Immunosuppressants","pages":[118,120],"count":40,"ext":null,"ready":false}]},{"id":"microbiology","name":"Microbiology","group":"general","color":"#4E7A23","pages":[121,200],"subjects":[{"id":"microbiology-basic-bacteriology","name":"Basic Bacteriology","pages":[122,131],"count":120,"ext":null,"ready":false},{"id":"microbiology-clinical-bacteriology","name":"Clinical Bacteriology","pages":[132,148],"count":200,"ext":null,"ready":false},{"id":"microbiology-mycology","name":"Mycology","pages":[149,151],"count":40,"ext":null,"ready":false},{"id":"microbiology-parasitology","name":"Parasitology","pages":[152,158],"count":100,"ext":null,"ready":false},{"id":"microbiology-virology","name":"Virology","pages":[159,173],"count":180,"ext":null,"ready":false},{"id":"microbiology-systems","name":"Systems","pages":[174,182],"count":120,"ext":null,"ready":false},{"id":"microbiology-antimicrobials","name":"Antimicrobials","pages":[183,200],"count":200,"ext":null,"ready":false}]},{"id":"gp-pathology","name":"Pathology","group":"general","color":"#8C3B4A","pages":[201,226],"subjects":[{"id":"gp-pathology-cellular-injury","name":"Cellular Injury","pages":[202,208],"count":100,"ext":null,"ready":false},{"id":"gp-pathology-inflammation","name":"Inflammation","pages":[209,214],"count":80,"ext":null,"ready":false},{"id":"gp-pathology-neoplasia","name":"Neoplasia","pages":[215,224],"count":120,"ext":null,"ready":false},{"id":"gp-pathology-aging","name":"Aging","pages":[225,226],"count":40,"ext":null,"ready":false}]},{"id":"gp-pharmacology","name":"Pharmacology","group":"general","color":"#14685F","pages":[227,254],"subjects":[{"id":"gp-pharmacology-pk-pd","name":"Pharmacokinetics & Pharmacodynamics","pages":[228,233],"count":80,"ext":null,"ready":false},{"id":"gp-pharmacology-autonomic","name":"Autonomic Drugs","pages":[234,245],"count":160,"ext":null,"ready":false},{"id":"gp-pharmacology-toxicities","name":"Toxicities & Adverse Effects","pages":[246,251],"count":80,"ext":null,"ready":false},{"id":"gp-pharmacology-misc","name":"Miscellaneous","pages":[252,254],"count":40,"ext":null,"ready":false}]},{"id":"public-health","name":"Public Health Sciences","group":"general","color":"#6B5A1E","pages":[255,278],"subjects":[{"id":"public-health-epi-biostat","name":"Epidemiology & Biostatistics","pages":[256,267],"count":160,"ext":null,"ready":false},{"id":"public-health-ethics","name":"Ethics","pages":[268,270],"count":40,"ext":null,"ready":false},{"id":"public-health-communication","name":"Communication Skills","pages":[271,275],"count":60,"ext":null,"ready":false},{"id":"public-health-healthcare-delivery","name":"Healthcare Delivery","pages":[276,278],"count":40,"ext":null,"ready":false}]}]}</script>
+<script>
+(function(){
+"use strict";
+const REG = JSON.parse(document.getElementById('registry').textContent);
+const BASE = REG.base || "";
+const $app = document.getElementById('app');
+const $crumbs = document.getElementById('crumbs');
+const SYS = {}, SUBJ = {};
+REG.systems.forEach(s => { SYS[s.id] = s; s.subjects.forEach(x => { x.sys = s; SUBJ[x.id] = x; }); });
+const WORDS = ["Zero","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten"];
+const LET = "ABCDE";
+
+/* ---------- storage (per browser, optional) ---------- */
+const MEM = {};
+const store = {
+  get(k, d){ if (k in MEM) return MEM[k] === null ? d : JSON.parse(MEM[k]); try { const v = localStorage.getItem(k); if (v) { MEM[k] = v; return JSON.parse(v); } } catch(e){} return d; },
+  set(k, v){ const j = JSON.stringify(v); MEM[k] = j; try { localStorage.setItem(k, j); } catch(e){} },
+  del(k){ MEM[k] = null; try { localStorage.removeItem(k); } catch(e){} }
+};
+const skey = id => 'famcq:v1:' + id;
+function prog(id){
+  const st = store.get(skey(id), {a:{}}); const v = Object.values(st.a || {});
+  return { answered: v.length, correct: v.filter(x => x[1]).length };
+}
+function sysProg(sys){
+  let a=0,c=0,t=0,live=0,n=0,plan=0;
+  sys.subjects.forEach(s => { plan += (s.planned || s.count); if (s.ready){ const p = prog(s.id); a+=p.answered; c+=p.correct; t+=s.count; live++; } if (s.ext){ t+=s.count; live++; } n++; });
+  return {answered:a, correct:c, total:t, live, n, plan};
+}
+
+/* ---------- helpers ---------- */
+const esc = s => String(s).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+const fmt = s => esc(s).replace(/\n/g,'<br>');
+const pad = n => String(n).padStart(2,'0');
+const nf = n => n.toLocaleString('en-US');
+const pct = (a,b) => b ? Math.round(100*a/b) : 0;
+const tintStyle = c => `style="--sys:${c}"`;
+const linkFor = id => (BASE ? BASE + '#' + id : '');
+function toast(msg){ const t = document.getElementById('toast'); t.textContent = msg; t.hidden = false; clearTimeout(toast._t); toast._t = setTimeout(() => t.hidden = true, 2200); }
+function copy(text){
+  if (!text){ toast('Link not available yet'); return; }
+  const done = () => toast('Link copied');
+  try { navigator.clipboard.writeText(text).then(done, () => fallbackCopy(text)); } catch(e){ fallbackCopy(text); }
+}
+function fallbackCopy(text){
+  const ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly',''); ta.style.position='fixed'; ta.style.opacity='0';
+  document.body.appendChild(ta); ta.select();
+  let ok=false; try { ok = document.execCommand('copy'); } catch(e){}
+  ta.remove(); toast(ok ? 'Link copied' : text);
+}
+function waLink(title, id){ const u = linkFor(id); return 'https://wa.me/?text=' + encodeURIComponent(title + ' — practise with me: ' + (u || '')); }
+function setTheme(c){ document.getElementById('bar').style.setProperty('--sys', c || '#2D4A9A'); document.body.style.setProperty('--sys', c || '#2D4A9A'); }
+function crumbs(parts){
+  $crumbs.innerHTML = parts.map((p,i) => i === parts.length-1 ? `<span class="here">${esc(p[0])}</span>` : `<a href="#${p[1]}">${esc(p[0])}</a><span class="sep">/</span>`).join('');
+}
+function totals(){
+  let live=0,q=0,n=0,ans=0; REG.systems.forEach(s => s.subjects.forEach(x => { n++; if (x.ready || x.ext){ live++; q+=x.count; } if (x.ready) ans += prog(x.id).answered; }));
+  return {live,q,n,ans};
+}
+
+/* ---------- views ---------- */
+function folderCard(s){
+  const p = sysProg(s); const dim = p.live === 0;
+  return `<a class="folder tint${dim?' dim':''}" ${tintStyle(s.color)} href="#${s.id}">
+    <span class="name">${esc(s.name)}</span>
+    <span class="sub">${s.subjects.map(x=>esc(x.name)).join(' · ')}</span>
+    <span class="ff">
+      <span class="row"><span>${p.n} subfolders</span><span>pp. ${s.pages[0]}–${s.pages[1]}</span></span>
+      <span class="meter" aria-hidden="true"><i style="width:${pct(p.total,p.plan)}%"></i></span>
+      <span class="row"><span>${nf(p.total)} / ${nf(p.plan)} Qs live</span>${dim ? '<span class="pill">Soon</span>' : `<span class="pill live">${p.answered ? nf(p.answered)+' done' : 'Open'}</span>`}</span>
+    </span></a>`;
+}
+function hub(){
+  setTheme('#2D4A9A'); $crumbs.innerHTML = '';
+  document.title = 'First Aid MCQ Bank';
+  const t = totals(); const last = store.get('famcq:v1:last', null);
+  const lastS = last && SUBJ[last.id] && SUBJ[last.id].ready ? SUBJ[last.id] : null;
+  const groups = [['systems','Section III','High-Yield Organ Systems'],['general','Section II','High-Yield General Principles']];
+  $app.innerHTML = `
+  <section class="hero">
+    <p class="eyebrow">Medical Companion · USMLE Step 1 · First Aid 2026</p>
+    <h1>First Aid MCQ Bank</h1>
+    <p class="lead">Exam-style questions for every section of First Aid. Open a system folder, pick a subject, and answer in rounds of 20. Every option comes with an explanation and the page to revise.</p>
+    <div class="stats"><span><b>${nf(t.q)}</b> questions live</span><span><b>${t.live}</b> of ${t.n} subjects ready</span><span><b>${nf(t.ans)}</b> answered by you</span></div>
+  </section>
+  <div class="hub-cards">${channelCard()}${miniProgress()}${testCard()}${flagCard()}</div>
+  ${lastS ? `<a class="continue tint" ${tintStyle(lastS.sys.color)} href="#${lastS.id}"><span class="k">Continue</span><span class="t">${esc(lastS.sys.name)} · ${esc(lastS.name)} — Round ${pad(last.r+1)}, Q${last.q+1}</span><span class="btn solid">Resume →</span></a>` : ''}
+  ${groups.map(([g,sec,label]) => { const list = REG.systems.filter(s => s.group === g); const q = list.reduce((a,s)=>a+s.subjects.reduce((b,x)=>b+(x.planned||x.count),0),0);
+    return `<div class="section-head"><h2>${label}</h2><span class="meta">${sec} · ${list.length} folders · ${nf(q)} questions planned</span></div>
+    <div class="shelf">${list.map(folderCard).join('')}</div>`; }).join('')}
+  <p class="about">Original practice questions written from First Aid for the USMLE Step 1 2026. Page numbers refer to that edition. Your progress is saved in this browser. Sign-in with Google is coming soon, so your progress can follow you to every device. Educational revision, not an official exam question bank.</p>`;
+}
+function folder(s){
+  setTheme(s.color); crumbs([['First Aid','' ],[s.name, s.id]]);
+  document.title = s.name + ' · First Aid MCQ Bank';
+  const p = sysProg(s);
+  $app.innerHTML = `
+  <section class="hero tint" ${tintStyle(s.color)}>
+    <p class="eyebrow">Folder · ${s.group==='systems'?'Organ system':'General principles'} · First Aid pp. ${s.pages[0]}–${s.pages[1]}</p>
+    <h1>${esc(s.name)}</h1>
+    <div class="stats"><span><b>${p.live}</b> of ${p.n} subfolders live</span><span><b>${nf(p.total)}</b> of ${nf(p.plan)} questions live</span><span><b>${nf(p.answered)}</b> answered · <b>${nf(p.correct)}</b> correct</span></div>
+  </section>
+  ${mockCard(s)}
+  <div class="files tint" ${tintStyle(s.color)}>${s.subjects.map(x => fileRow(x)).join('')}${flaggedRow(s)}</div>
+  <div class="foot"><a class="btn" href="#">← All folders</a><button class="btn" type="button" data-share="${s.id}" data-title="${esc(s.name)} MCQs">Copy folder link</button></div>`;
+}
+function fileRow(x){
+  const pages = x.pages[0]===x.pages[1] ? `p. ${x.pages[0]}` : `pp. ${x.pages[0]}–${x.pages[1]}`;
+  const rounds = Math.ceil(x.count/20);
+  if (x.ext) return `<a class="file" href="${esc(x.ext)}" target="_blank" rel="noopener">
+      <span class="ic" aria-hidden="true">↗</span>
+      <div><div class="t">${esc(x.name)}</div><div class="d"><span>${x.count} MCQs · ${rounds} round${rounds>1?'s':''}</span><span>${pages}</span><span>Opens your separate site</span></div></div>
+      <div class="r"><span class="pill live">Live ↗</span></div></a>`;
+  if (!x.ready) return `<div class="file soon" aria-disabled="true">
+      <span class="ic" aria-hidden="true">${rounds}R</span>
+      <div><div class="t">${esc(x.name)}</div><div class="d"><span>${x.count} MCQs planned · ${rounds} round${rounds>1?'s':''}</span><span>${pages}</span></div></div>
+      <div class="r"><span class="pill">Coming soon</span></div></div>`;
+  const p = prog(x.id);
+  return `<a class="file" href="#${x.id}">
+      <span class="ic" aria-hidden="true">${rounds}R</span>
+      <div><div class="t">${esc(x.name)}</div><div class="d"><span>${x.count} MCQs · ${rounds} round${rounds>1?'s':''}</span><span>${pages}</span><span>${p.answered ? `${p.answered} answered · ${pct(p.correct,p.answered)}% correct` : 'Not started'}</span></div></div>
+      <div class="r"><span class="pill live">${p.answered===x.count?'Done':'Open'}</span><span class="meter" aria-hidden="true"><i style="width:${pct(p.answered,x.count)}%"></i></span></div></a>`;
+}
+
+/* ---------- progress tracker ---------- */
+const YT = 'https://www.youtube.com/@medicalcompaniondoctor';
+const accTxt = (c,a) => a ? pct(c,a) + '%' : '—';
+const accCls = (c,a) => !a ? '' : (pct(c,a) >= 80 ? 'acc-good' : pct(c,a) < 60 ? 'acc-low' : '');
+function subjStats(x){
+  const planned = x.planned || x.count;
+  if (x.ext) return {ext:true, total:x.count, answered:0, correct:0, rounds:Math.ceil(x.count/20), roundsDone:0};
+  if (!x.ready) return {soon:true, total:planned, answered:0, correct:0, rounds:Math.ceil(planned/20), roundsDone:0};
+  const st = store.get(skey(x.id), {a:{}}); const a = st.a || {};
+  const rq = x.rq || Array(Math.ceil(x.count/20)).fill(20);
+  const per = rq.map(() => 0); let answered = 0, correct = 0;
+  Object.keys(a).forEach(k => { const r = +k.split('-')[0]; if (per[r] != null){ per[r]++; answered++; if (a[k] && a[k][1]) correct++; } });
+  return {total:x.count, answered, correct, rounds:rq.length, roundsDone: per.filter((n,i) => n >= rq[i]).length};
+}
+function sysStats(s){
+  const o = {total:0, answered:0, correct:0, rounds:0, roundsDone:0, live:0, started:0, n:s.subjects.length};
+  s.subjects.forEach(x => { if (!x.ready) return; const v = subjStats(x); o.total+=v.total; o.answered+=v.answered; o.correct+=v.correct; o.rounds+=v.rounds; o.roundsDone+=v.roundsDone; o.live++; if (v.answered) o.started++; });
+  return o;
+}
+function allStats(){
+  const A = {total:0, answered:0, correct:0, rounds:0, roundsDone:0, live:0, started:0, n:0};
+  REG.systems.forEach(s => { const v = sysStats(s); Object.keys(A).forEach(k => A[k] += v[k]); });
+  return A;
+}
+function channelCard(){
+  return `<a class="channel tint" href="${YT}" target="_blank" rel="noopener"><span class="logo" aria-hidden="true"></span><span class="t"><b>Medical Companion on YouTube</b><small>Watch the First Aid lecture series, then test yourself here.</small></span><span class="go">Watch ↗</span></a>`;
+}
+function miniProgress(){
+  const A = allStats();
+  return `<a class="mini tint" href="#progress"><span class="t"><b>Your progress</b><small>${A.answered ? `${nf(A.answered)} of ${nf(A.total)} answered · ${accTxt(A.correct,A.answered)} correct · ${A.roundsDone} rounds done` : 'Answer a question and your progress shows here, by system and by subject.'}</small><span class="meter" aria-hidden="true"><i style="width:${pct(A.answered,A.total)}%"></i></span></span><span class="go">Tracker →</span></a>`;
+}
+function trow(o){
+  const tag = o.href ? 'a' : 'div';
+  const v = o.v; let bar, meta;
+  if (v.soon){ bar = '<span class="tnote">Coming soon</span>'; meta = `<span class="tnum">${nf(v.total)} planned</span><span class="tnum"></span><span class="tnum"></span>`; }
+  else if (v.ext){ bar = '<span class="tnote">Tracked on its own site ↗</span>'; meta = `<span class="tnum">${nf(v.total)} Qs</span><span class="tnum"></span><span class="tnum"></span>`; }
+  else {
+    bar = `<span class="meter" aria-hidden="true"><i style="width:${pct(v.answered,v.total)}%"></i></span>`;
+    meta = `<span class="tnum"><b>${nf(v.answered)}</b> / ${nf(v.total)}<i class="sm"> answered</i></span><span class="tnum ${accCls(v.correct,v.answered)}">${accTxt(v.correct,v.answered)}<i class="sm"> correct</i></span><span class="tnum">${v.roundsDone}/${v.rounds}<i class="sm"> rounds</i></span>`;
+  }
+  return `<${tag} class="trow tint${v.soon ? ' soon' : ''}" ${tintStyle(o.color)}${o.href ? ` href="${esc(o.href)}"` : ''}${v.ext ? ' target="_blank" rel="noopener"' : ''}>
+    <span class="tname"><i class="chip" aria-hidden="true"></i><span>${esc(o.name)}</span></span>
+    <span class="tbar">${bar}</span><span class="tmeta">${meta}</span></${tag}>`;
+}
+function progressView(){
+  setTheme('#2D4A9A'); crumbs([['First Aid',''],['Progress','progress']]);
+  document.title = 'Progress · First Aid MCQ Bank';
+  const A = allStats(); const SS = {};
+  REG.systems.forEach(s => s.subjects.forEach(x => SS[x.id] = subjStats(x)));
+  const synced = document.getElementById('sync').dataset.state === 'synced';
+  const weak = Object.keys(SS).map(id => [SUBJ[id], SS[id]]).filter(([x,v]) => x.ready && v.answered >= 10 && pct(v.correct,v.answered) < 80)
+    .sort((p,q) => p[1].correct/p[1].answered - q[1].correct/q[1].answered).slice(0,3);
+  const f = store.get('famcq:v1:tkFilter', 'available');
+  const keep = (x,v) => f === 'all' || (f === 'available' && (x.ready || x.ext)) || (f === 'started' && v.answered > 0) || (f === 'review' && v.answered >= 10 && pct(v.correct,v.answered) < 70);
+  const filters = [['available','Available'],['started','Started'],['review','Needs review'],['all','All']];
+  let subjHtml = REG.systems.map(s => {
+    const rows = s.subjects.filter(x => keep(x, SS[x.id])); if (!rows.length) return '';
+    return `<div class="trow group tint" ${tintStyle(s.color)}><span class="tname"><i class="chip" aria-hidden="true"></i><span>${esc(s.name)}</span></span></div>` +
+      rows.map(x => trow({name:x.name, color:s.color, v:SS[x.id], href: x.ext ? x.ext : (x.ready ? '#' + x.id : '')})).join('');
+  }).join('');
+  if (!subjHtml) subjHtml = `<div class="trow"><span class="tnote">${f === 'review' ? 'Nothing needs review. A subject shows here once you have answered 10 or more of its questions and scored under 70%.' : 'You haven’t answered any questions yet. Open a folder and start a round.'}</span></div>`;
+  $app.innerHTML = `
+  <section class="hero">
+    <p class="eyebrow">Your progress · saved in this browser</p>
+    <h1>Progress tracker</h1>
+    <div class="kpis">
+      <div class="kpi"><span class="v">${nf(A.answered)}<small>/ ${nf(A.total)}</small></span><span class="l">Questions answered · ${pct(A.answered,A.total)}% of live questions</span></div>
+      <div class="kpi"><span class="v ${accCls(A.correct,A.answered)}">${accTxt(A.correct,A.answered)}</span><span class="l">Accuracy · ${nf(A.correct)} correct on first try</span></div>
+      <div class="kpi"><span class="v">${A.roundsDone}<small>/ ${A.rounds}</small></span><span class="l">Rounds completed · 20 questions each</span></div>
+      <div class="kpi"><span class="v">${A.started}<small>/ ${A.live}</small></span><span class="l">Subjects started · ${A.live} of ${A.n} live so far</span></div>
+    </div>
+    <p class="links"><a href="#flagged">${flagCount()} flagged questions →</a><a href="#test">Mock exams and tests →</a></p>
+  </section>
+  ${weak.length ? `<div class="section-head"><h2>Review next</h2><span class="meta">Your lowest-scoring subjects (10+ answered)</span></div>
+  <div class="weak">${weak.map(([x,v]) => `<a class="mini tint" ${tintStyle(x.sys.color)} href="#${x.id}"><span class="t"><b>${esc(x.sys.name)} · ${esc(x.name)}</b><small><span class="${accCls(v.correct,v.answered)}">${pct(v.correct,v.answered)}% correct</span> on ${v.answered} answered</small></span><span class="go">Review →</span></a>`).join('')}</div>` : ''}
+  <div class="section-head"><h2>By system</h2><span class="meta">Tap a system to open its folder</span></div>
+  <div class="ttable">
+    <div class="trow thead"><span>System</span><span>Completion</span><span class="tmeta"><span class="tnum">Answered</span><span class="tnum">Accuracy</span><span class="tnum">Rounds</span></span></div>
+    ${REG.systems.map(s => { const v = sysStats(s); return trow({name:s.name, color:s.color, href:'#' + s.id, v: v.live ? v : {soon:true, total: s.subjects.reduce((a,x) => a + (x.planned || x.count), 0)}}); }).join('')}
+  </div>
+  <div class="section-head"><h2>By subject</h2><div class="seg" role="group" aria-label="Filter subjects">${filters.map(([k,l]) => `<button type="button" data-filter="${k}" aria-pressed="${f === k}">${l}</button>`).join('')}</div></div>
+  <div class="ttable">
+    <div class="trow thead"><span>Subject</span><span>Completion</span><span class="tmeta"><span class="tnum">Answered</span><span class="tnum">Accuracy</span><span class="tnum">Rounds</span></span></div>
+    ${subjHtml}
+  </div>
+  <p class="about">Accuracy counts your first answer to each question.</p>`;
+}
+
+/* ---------- quiz ---------- */
+const cache = {};
+let Q = null; // {s, data, st, r, q, summary}
+function loadData(s){
+  if (cache[s.id]) return Promise.resolve(cache[s.id]);
+  return fetch(s.id + '.json?v=' + (s.v || '1')).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(d => (cache[s.id] = d));
+}
+function quiz(s){
+  setTheme(s.sys.color); crumbs([['First Aid',''],[s.sys.name, s.sys.id],[s.name, s.id]]);
+  document.title = s.sys.name + ' ' + s.name + ' · First Aid MCQ Bank';
+  if (s.ext){
+    $app.innerHTML = `<div class="empty tint" ${tintStyle(s.sys.color)}><h2>${esc(s.sys.name)} ${esc(s.name)}</h2><p>This subject lives on its own site.</p><a class="btn solid" href="${esc(s.ext)}" target="_blank" rel="noopener">Open ${esc(s.name)} ↗</a><a class="btn" href="#${s.sys.id}">← Back to ${esc(s.sys.name)}</a></div>`; return;
+  }
+  if (!s.ready){
+    $app.innerHTML = `<div class="empty tint" ${tintStyle(s.sys.color)}><h2>${esc(s.sys.name)} ${esc(s.name)}</h2><p>${s.count} questions from First Aid pp. ${s.pages[0]}–${s.pages[1]} are being written. This folder unlocks at the same link when they're ready.</p><a class="btn" href="#${s.sys.id}">← Back to ${esc(s.sys.name)}</a></div>`; return;
+  }
+  $app.innerHTML = '<p class="loading">Loading questions…</p>';
+  loadData(s).then(data => {
+    const st = store.get(skey(s.id), {a:{}, last:null}); st.a = st.a || {};
+    let r = 0, q = 0;
+    if (st.last && data.rounds[st.last.r]){ r = st.last.r; q = Math.min(st.last.q, data.rounds[r].q.length-1); }
+    else { const fr = data.rounds.findIndex((R,ri) => R.q.some((_,qi) => !st.a[ri+'-'+qi])); if (fr > 0) r = fr; }
+    Q = {s, data, st, r, q, summary:false};
+    renderQuiz();
+  }).catch(() => {
+    $app.innerHTML = `<div class="empty"><h2>Questions didn't load</h2><p>Check your connection, then try again.</p><button class="btn solid" type="button" id="retry">Try again</button></div>`;
+    document.getElementById('retry').onclick = () => quiz(s);
+  });
+}
+function roundStats(ri){
+  const R = Q.data.rounds[ri]; let a=0,c=0;
+  R.q.forEach((_,qi) => { const v = Q.st.a[ri+'-'+qi]; if (v){ a++; if (v[1]) c++; } });
+  return {a, c, n:R.q.length};
+}
+function quizTotals(){
+  let a=0,c=0,n=0,done=0;
+  Q.data.rounds.forEach((R,ri) => { const x = roundStats(ri); a+=x.a; c+=x.c; n+=x.n; if (x.a===x.n) done++; });
+  return {a,c,n,done};
+}
+function save(){
+  const now = Date.now();
+  Q.st.last = {r:Q.r, q:Q.q, t:now}; store.set(skey(Q.s.id), Q.st);
+  store.set('famcq:v1:last', {id:Q.s.id, r:Q.r, q:Q.q, t:now});
+  Sync.queue(Q.s.sys.id, 2500);
+}
+function renderQuiz(){
+  const {s, data} = Q; const T = quizTotals(); const nR = data.rounds.length;
+  $app.innerHTML = `
+  <div class="tint" ${tintStyle(s.sys.color)}>
+  <section class="hero">
+    <p class="eyebrow" id="roundEyebrow">Round ${pad(Q.r+1)} / Exam practice</p>
+    <h1>${esc(s.sys.name)} ${esc(s.name)}.</h1>
+    <p class="lead">${nf(T.n)} questions. ${WORDS[nR] || nR} focused round${nR>1?'s':''}. Learn the reasoning behind every choice, with the First Aid page for each answer.</p>
+    <div class="tags"><span class="tag">First Aid 2026 · ${s.pages[0]===s.pages[1]?'p. '+s.pages[0]:'pp. '+s.pages[0]+'–'+s.pages[1]}</span><span class="tag">Instant feedback</span><span class="tag">No sign-in</span></div>
+  </section>
+  <h2 style="font-size:20px">Choose your round <span class="mono" style="font-size:13px;color:var(--muted);font-family:var(--f-mono)">· 20 questions each</span></h2>
+  <div class="rounds" id="rounds" style="margin-top:12px"></div>
+  <p class="overall" id="overall"></p>
+  <section class="panel" id="question-panel" aria-live="polite"></section>
+  <p class="hint">Keys: A–E to answer · ← → to move · F to flag</p>
+  <div class="share">
+    <div><h3>Better with a friend.</h3><p>Send the same test. Everyone starts their own attempt, and your first answer is scored.</p></div>
+    <div class="acts"><a class="btn solid" href="${waLink(s.sys.name+' '+s.name+' MCQs', s.id)}" target="_blank" rel="noopener">Share on WhatsApp ↗</a><button class="btn" type="button" data-share="${s.id}" data-title="${esc(s.sys.name+' '+s.name)}">Copy link</button></div>
+  </div>
+  <div class="foot">
+    <a class="btn" href="#${s.sys.id}">← ${esc(s.sys.name)} folder</a>
+    <button class="btn" type="button" id="restart">Restart attempt ↻</button>
+  </div>
+  <p class="about">Original practice questions written from First Aid for the USMLE Step 1 2026, ${s.pages[0]===s.pages[1]?'page '+s.pages[0]:'pages '+s.pages[0]+'–'+s.pages[1]}. Each answer explains every option and cites the page to revise. Progress is saved in this browser. Educational revision, not an official exam question bank.</p>
+  </div>`;
+  const rs = document.getElementById('restart'); let armed = false, tm;
+  rs.onclick = () => {
+    if (!armed){ armed = true; rs.textContent = 'Tap again to erase progress'; rs.style.borderColor = 'var(--bad)'; rs.style.color = 'var(--bad)'; tm = setTimeout(() => { armed=false; rs.textContent='Restart attempt ↻'; rs.style.borderColor=''; rs.style.color=''; }, 4000); return; }
+    clearTimeout(tm); Q.st = {a:{}, last:null, rv:Date.now(), fl:Q.st.fl || {}}; store.set(skey(s.id), Q.st); Sync.queue(s.sys.id, 0); Q.r = 0; Q.q = 0; Q.summary = false; renderQuiz(); toast('Attempt restarted');
+  };
+  drawRounds(); drawPanel(false);
+}
+function drawRounds(){
+  const el = document.getElementById('rounds'); if (!el) return;
+  el.innerHTML = Q.data.rounds.map((R,ri) => { const x = roundStats(ri);
+    return `<button class="round" type="button" data-round="${ri}" aria-current="${ri===Q.r}">
+      <span class="n">ROUND ${pad(ri+1)}</span><span class="tt">${esc(R.t)}</span>
+      <span class="st">${x.a}/${x.n} answered${x.a?` · ${x.c} correct`:''}</span>
+      <span class="meter" aria-hidden="true"><i style="width:${pct(x.a,x.n)}%"></i></span></button>`; }).join('');
+  const T = quizTotals();
+  document.getElementById('overall').textContent = `Overall: ${T.a} of ${T.n} answered · ${T.done} of ${Q.data.rounds.length} rounds complete · ${T.c} correct`;
+  const eb = document.getElementById('roundEyebrow'); if (eb) eb.textContent = `Round ${pad(Q.r+1)} / Exam practice`;
+}
+function drawPanel(scroll){
+  const el = document.getElementById('question-panel'); const R = Q.data.rounds[Q.r]; const x = roundStats(Q.r);
+  const mapOpen = store.get('famcq:v1:mapOpen', false);
+  const head = `<header class="panel-head"><div><p class="eyebrow">Round ${pad(Q.r+1)} of ${pad(Q.data.rounds.length)}</p><h2>${esc(R.t)}</h2></div><p class="rstat">${x.a} of ${x.n} answered · ${x.c} correct</p></header>
+  <details class="qmap" id="qmap"${mapOpen?' open':''}><summary>Question map</summary>
+    <div class="grid">${R.q.map((_,qi) => { const v = Q.st.a[Q.r+'-'+qi]; const fl = isFl(Q.st.fl, Q.r+'-'+qi); return `<button class="cell${v?(v[1]?' ok':' bad'):''}${fl?' fl':''}" type="button" data-q="${qi}" aria-label="Question ${qi+1}${v?(v[1]?', correct':', to review'):', unanswered'}${fl?', flagged':''}" aria-current="${!Q.summary && qi===Q.q}">${qi+1}</button>`; }).join('')}</div>
+    <p class="legend"><span><i class="l-ok"></i>Correct</span><span><i class="l-bad"></i>To review</span><span><i></i>Unanswered</span><span><i class="l-fl"></i>Flagged</span></p></details>`;
+  if (Q.summary){
+    const missed = R.q.map((_,qi)=>qi).filter(qi => { const v = Q.st.a[Q.r+'-'+qi]; return v && !v[1]; });
+    const unans = R.q.map((_,qi)=>qi).filter(qi => !Q.st.a[Q.r+'-'+qi]);
+    const next = Q.r + 1 < Q.data.rounds.length;
+    el.innerHTML = head + `<div class="summary">
+      <p class="eyebrow">Round ${pad(Q.r+1)} complete</p>
+      <div class="score">${x.c}<small>/ ${x.n} · ${pct(x.c,x.n)}%</small></div>
+      ${missed.length ? `<p style="margin:0">Review the ${missed.length} you missed:</p><div class="missed">${missed.map(qi=>`<button class="cell bad" style="width:40px" type="button" data-q="${qi}">${qi+1}</button>`).join('')}</div>` : '<p style="margin:0">Clean sweep. Every answer correct.</p>'}
+      ${unans.length ? `<p style="margin:0;color:var(--muted)">${unans.length} still unanswered.</p>` : ''}
+      <div style="display:flex;gap:10px;flex-wrap:wrap">${next ? `<button class="btn solid" type="button" data-round="${Q.r+1}">Start Round ${pad(Q.r+2)} →</button>` : `<a class="btn solid" href="#${Q.s.sys.id}">Back to ${esc(Q.s.sys.name)} folder</a>`}<button class="btn" type="button" data-q="0">Review from Q1</button></div>
+    </div>`;
+  } else {
+    const item = R.q[Q.q]; const v = Q.st.a[Q.r+'-'+Q.q]; const ans = !!v;
+    el.innerHTML = head + `<div class="qbody${ans?' answered':''}">
+      <div class="qtop"><p class="qnum">QUESTION ${Q.q+1} OF ${R.q.length}</p>${flagBtn(Q.s.id, Q.r+'-'+Q.q)}</div>
+      <p class="stem">${fmt(item.s)}</p>
+      <ol class="opts">${item.o.map((o,i) => { let cls='', mk='';
+        if (ans){ if (i===item.a){ cls='is-ok'; mk = v[0]===i ? 'Your answer · Correct' : 'Correct answer'; } else if (i===v[0]){ cls='is-bad'; mk='Your answer'; } }
+        return `<li class="${cls}"><button class="opt" type="button" data-opt="${i}"${ans?' disabled':''}><span class="let">${LET[i]}</span><span class="otxt">${fmt(o)}</span><span class="mk">${mk}</span></button><div class="why">${fmt(item.e[i])}</div></li>`; }).join('')}</ol>
+      ${ans ? `<div class="feedback"><span class="v ${v[1]?'ok':'bad'}">${v[1] ? '✓ Correct' : '✕ Not quite. The answer is ' + LET[item.a] + '.'}</span><span class="src">Revise: First Aid 2026, p. ${esc(item.p)}${item.k ? ' · ' + esc(item.k) : ''}</span></div>` : ''}
+    </div>`;
+  }
+  const last = Q.q === R.q.length - 1;
+  const nextLabel = Q.summary ? (Q.r+1 < Q.data.rounds.length ? 'Next round →' : 'Done') : (last ? 'Round summary →' : 'Next →');
+  el.insertAdjacentHTML('beforeend', `<nav class="qnav"><button class="btn" type="button" id="prev"${(!Q.summary && Q.q===0)?' disabled':''}>← Previous</button><button class="btn solid" type="button" id="next">${nextLabel}</button></nav>`);
+  document.getElementById('qmap').addEventListener('toggle', e => store.set('famcq:v1:mapOpen', e.target.open));
+  document.getElementById('prev').onclick = () => go(-1);
+  document.getElementById('next').onclick = () => go(1);
+  if (scroll){ const top = el.getBoundingClientRect().top; if (top < 60 || top > window.innerHeight * .6) el.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'}); }
+}
+function answer(i){
+  if (!Q || Q.summary) return; const item = Q.data.rounds[Q.r].q[Q.q]; const k = Q.r+'-'+Q.q;
+  if (Q.st.a[k]) return;
+  Q.st.a[k] = [i, i===item.a ? 1 : 0]; save(); Sync.queue(Q.s.sys.id, 800); drawRounds(); drawPanel(false);
+}
+function go(d){
+  const R = Q.data.rounds[Q.r];
+  if (Q.summary){ if (d<0){ Q.summary=false; Q.q=R.q.length-1; } else if (Q.r+1 < Q.data.rounds.length){ Q.summary=false; Q.r++; Q.q=0; } else { location.hash = Q.s.sys.id; return; } }
+  else if (d>0 && Q.q === R.q.length-1){ Q.summary = true; }
+  else { Q.q = Math.max(0, Math.min(R.q.length-1, Q.q+d)); }
+  save(); drawRounds(); drawPanel(true);
+}
+
+/* ---------- events ---------- */
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-opt],[data-q],[data-round],[data-share],[data-filter],#shareTop'); if (!t) return;
+  if (t.dataset.filter){ store.set('famcq:v1:tkFilter', t.dataset.filter); const y = window.scrollY; progressView(); window.scrollTo(0, y); return; }
+  if (t.id === 'shareTop'){ const h = location.hash.slice(1); copy(linkFor(h)); return; }
+  if (t.dataset.share){ copy(linkFor(t.dataset.share)); return; }
+  if (!Q) return;
+  if (t.dataset.opt !== undefined){ answer(+t.dataset.opt); return; }
+  if (t.dataset.round !== undefined){ Q.r = +t.dataset.round; Q.summary=false; const R=Q.data.rounds[Q.r]; const fi = R.q.findIndex((_,qi)=>!Q.st.a[Q.r+'-'+qi]); Q.q = fi<0?0:fi; save(); drawRounds(); drawPanel(true); return; }
+  if (t.dataset.q !== undefined){ Q.summary=false; Q.q = +t.dataset.q; save(); drawRounds(); drawPanel(true); return; }
+});
+document.addEventListener('keydown', e => {
+  if (!Q || !document.getElementById('question-panel') || e.metaKey || e.ctrlKey || e.altKey) return;
+  if (/INPUT|TEXTAREA|SELECT/.test(document.activeElement && document.activeElement.tagName)) return;
+  const k = e.key.toLowerCase(); const idx = 'abcde'.indexOf(k) >= 0 ? 'abcde'.indexOf(k) : '12345'.indexOf(k);
+  if (idx >= 0 && k.length===1){ answer(idx); e.preventDefault(); }
+  else if (e.key === 'ArrowRight'){ go(1); e.preventDefault(); }
+  else if (e.key === 'ArrowLeft'){ go(-1); e.preventDefault(); }
+  else if (k === 'f' && !Q.summary){ toggleFlag(Q.s.id + '|' + Q.r + '-' + Q.q); e.preventDefault(); }
+});
+/* ---------- flags ---------- */
+function flagsOf(id){ const st = (Q && Q.s.id === id) ? Q.st : store.get(skey(id), {a:{}}); return st.fl || {}; }
+const isFl = (fl, k) => !!(fl && fl[k] && fl[k][0]);
+function flaggedKeys(id){ const fl = flagsOf(id); return Object.keys(fl).filter(k => fl[k][0]); }
+function flagCount(){ let n = 0; REG.systems.forEach(s => s.subjects.forEach(x => { if (x.ready) n += flaggedKeys(x.id).length; })); return n; }
+function flagBtn(id, k, bar){ const on = isFl(flagsOf(id), k); return `<button class="flag${bar ? ' onbar' : ''}" type="button" data-flag="${id}|${k}" aria-pressed="${on}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 21V4h11l-2 4 2 4H8v9z" fill="${on ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>${on ? 'Flagged' : 'Flag'}</button>`; }
+function toggleFlag(spec){
+  const i = spec.indexOf('|'); const id = spec.slice(0, i), k = spec.slice(i + 1); if (!SUBJ[id]) return;
+  const st = (Q && Q.s.id === id) ? Q.st : store.get(skey(id), {a:{}});
+  st.fl = st.fl || {}; const on = !isFl(st.fl, k); st.fl[k] = [on ? 1 : 0, Date.now()];
+  store.set(skey(id), st); Sync.queue(SUBJ[id].sys.id, 1500);
+  toast(on ? 'Flagged for review' : 'Flag removed');
+  const h = location.hash.slice(1);
+  if (Q && Q.s.id === id) drawPanel(false);
+  else if (h === 'test') renderTest(true);
+  else if (h === 'flagged' || h.startsWith('flagged-')) flaggedView(true, h.startsWith('flagged-') ? h.slice(8) : null);
+}
+function sysFlagged(s){ return s.subjects.filter(x => x.ready).map(x => [x, flaggedKeys(x.id).length]).filter(g => g[1]); }
+const FLAG_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 21V4h11l-2 4 2 4H8v9z" fill="currentColor" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>';
+function flaggedRow(s){
+  if (!s.subjects.some(x => x.ready)) return '';
+  const n = sysFlagged(s).reduce((t, g) => t + g[1], 0);
+  return `<a class="file flagrow" href="#flagged-${s.id}"><span class="ic flagic">${FLAG_SVG}</span><div><div class="t">Flagged questions</div><div class="d"><span>${n ? `${n} saved from ${esc(s.name)}` : 'Flag questions in this system to collect them here'}</span></div></div><div class="r"><span class="pill${n ? ' live' : ''}">${n ? 'Open' : 'Empty'}</span></div></a>`;
+}
+function flaggedView(keep, sid){
+  const sys = sid ? SYS[sid] : null;
+  setTheme(sys ? sys.color : '#2D4A9A');
+  crumbs(sys ? [['First Aid',''],['Flagged','flagged'],[sys.name, 'flagged-' + sid]] : [['First Aid',''],['Flagged','flagged']]);
+  document.title = (sys ? sys.name + ' · flagged' : 'Flagged') + ' · First Aid MCQ Bank';
+  if (!sys){
+    const shelves = REG.systems.map(s => [s, sysFlagged(s)]).filter(r => r[1].length);
+    const total = shelves.reduce((t, r) => t + r[1].reduce((u, g) => u + g[1], 0), 0);
+    if (!total){ $app.innerHTML = `<section class="hero"><p class="eyebrow">Flagged questions</p><h1>Nothing flagged yet</h1><p class="lead">Tap <b>Flag</b> on any question, in a round or during a test. It's saved here in its system's folder for later review.</p></section>`; return; }
+    const groups = [['systems','High-Yield Organ Systems'],['general','High-Yield General Principles']];
+    $app.innerHTML = `
+    <section class="hero"><p class="eyebrow">Flagged questions</p><h1>${total} flagged</h1><p class="lead">Your saved questions, filed by system. Open a folder to review them, or practise everything at once with answers after each question.</p>
+      <div><button class="btn solid" type="button" data-t="flagtest">Practise all ${total} →</button></div></section>
+    ${groups.map(([g, label]) => { const list = shelves.filter(r => r[0].group === g); if (!list.length) return '';
+      return `<div class="section-head"><h2>${label}</h2><span class="meta">${list.length} folder${list.length > 1 ? 's' : ''} with flags</span></div>
+      <div class="shelf">${list.map(([s, subs]) => { const n = subs.reduce((t, g2) => t + g2[1], 0);
+        return `<a class="folder tint" ${tintStyle(s.color)} href="#flagged-${s.id}"><span class="name">${esc(s.name)}</span><span class="sub">${subs.map(([x, c]) => `${esc(x.name)} ${c}`).join(' · ')}</span><span class="ff"><span class="row"><span class="flagcount">${FLAG_SVG}${n} flagged</span><span class="pill live">Open</span></span></span></a>`; }).join('')}</div>`; }).join('')}
+    <p class="about">Folders appear here once you flag a question in that system.</p>`;
+    if (keep) window.scrollTo(0, keep === true ? window.scrollY : 0);
+    return;
+  }
+  const groups = sysFlagged(sys).map(([x]) => [x.id, flaggedKeys(x.id)]);
+  const total = groups.reduce((n, g) => n + g[1].length, 0);
+  if (!total){ $app.innerHTML = `<section class="hero tint" ${tintStyle(sys.color)}><p class="eyebrow">Flagged · ${esc(sys.name)}</p><h1>No flags in ${esc(sys.name)} yet</h1><p class="lead">Tap <b>Flag</b> on a ${esc(sys.name)} question and it's saved here.</p><div class="facts"><a class="btn" href="#${sys.id}">← ${esc(sys.name)} folder</a><a class="btn" href="#flagged">All flagged</a></div></section>`; return; }
+  const draw = () => {
+    if (location.hash.slice(1) !== 'flagged-' + sid) return;
+    const y = window.scrollY;
+    const byKey = (p, q) => { const [a, b] = p.split('-').map(Number), [c, d] = q.split('-').map(Number); return a - c || b - d; };
+    $app.innerHTML = `
+    <section class="hero tint" ${tintStyle(sys.color)}><p class="eyebrow">Flagged · ${esc(sys.name)}</p><h1>${total} flagged in ${esc(sys.name)}</h1><p class="lead">Grouped by subject. Open one in its round, or practise all of them with answers after each question.</p>
+      <div class="facts"><button class="btn solid" type="button" data-t="flagtest:${sys.id}">Practise these ${total} →</button><a class="btn" href="#${sys.id}">${esc(sys.name)} folder</a></div></section>
+    ${groups.map(([id, ks]) => { const x = SUBJ[id]; const a = (store.get(skey(id), {a:{}}).a) || {};
+      return `<div class="section-head tint" ${tintStyle(sys.color)}><h2>${esc(x.name)}</h2><span class="meta">${ks.length} flagged</span></div>
+      <div class="flist">${ks.sort(byKey).map(k => { const [r, q] = k.split('-').map(Number); const R = cache[id].rounds[r]; const item = R && R.q[q]; if (!item) return ''; const v = a[k];
+        return `<div class="fitem"><div class="fmeta"><span>Round ${pad(r + 1)} · Q${q + 1}</span>${v ? `<span class="${v[1] ? 'acc-good' : 'acc-low'}">${v[1] ? 'Correct' : 'Missed'}</span>` : '<span>Unanswered</span>'}</div><p>${esc(item.s.length > 200 ? item.s.slice(0, 200) + '…' : item.s)}</p><div class="facts"><button class="btn" type="button" data-t="open:${id}:${k}">Open question</button>${flagBtn(id, k)}</div></div>`; }).join('')}</div>`; }).join('')}`;
+    if (keep) window.scrollTo(0, y);
+  };
+  if (groups.every(g => cache[g[0]])) return draw();
+  $app.innerHTML = '<p class="loading">Loading flagged questions…</p>';
+  Promise.all(groups.map(g => loadData(SUBJ[g[0]]))).then(draw).catch(() => { $app.innerHTML = `<div class="empty"><h2>Questions didn't load</h2><p>Check your connection, then try again.</p></div>`; });
+}
+
+/* ---------- tests & USMLE-style mocks ---------- */
+let TEST = store.get('famcq:v1:test', null); let tTimer = null;
+if (TEST && TEST.seg) TEST.seg = null;
+const SECS = 90, MOCK_N = 40;
+function saveTest(){ store.set('famcq:v1:test', TEST); }
+function readyIds(){ const o = []; REG.systems.forEach(s => s.subjects.forEach(x => { if (x.ready) o.push(x.id); })); return o; }
+function keysOf(x){ const rq = x.rq || Array(Math.ceil(x.count / 20)).fill(20); const o = []; rq.forEach((n, r) => { for (let q = 0; q < n; q++) o.push(r + '-' + q); }); return o; }
+function pool(id, src){
+  const x = SUBJ[id]; const st = store.get(skey(id), {a:{}}); const a = st.a || {}; const all = keysOf(x);
+  if (src === 'unanswered') return all.filter(k => !a[k]);
+  if (src === 'incorrect') return all.filter(k => a[k] && !a[k][1]);
+  if (src === 'flagged') return all.filter(k => isFl(st.fl, k));
+  return all;
+}
+function cfg(){ const c = store.get('famcq:v1:testcfg', null) || {}; return {subs: Array.isArray(c.subs) ? c.subs : readyIds(), src: c.src || 'all', n: c.n || 20, timed: c.timed !== false, mode: c.mode || 'exam'}; }
+function setCfg(c){ store.set('famcq:v1:testcfg', c); }
+function shuffle(arr){ for (let i = arr.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }
+const mmss = s => { s = Math.max(0, Math.round(s)); const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = s % 60; return (h ? h + ':' + pad(m) : m) + ':' + pad(x); };
+const accP = p => p >= 80 ? 'acc-good' : p < 60 ? 'acc-low' : '';
+function elapsed(){ return TEST ? TEST.used + (TEST.seg ? (Date.now() - TEST.seg) / 1000 : 0) : 0; }
+function fold(){ if (TEST && TEST.seg){ TEST.used += (Date.now() - TEST.seg) / 1000; TEST.seg = null; saveTest(); } clearInterval(tTimer); tTimer = null; }
+function clockTxt(){ return TEST.timed ? mmss(TEST.limit - elapsed()) : mmss(elapsed()); }
+function itemQ(it){ const d = cache[it.s]; const [r, q] = it.k.split('-').map(Number); return d && d.rounds[r] && d.rounds[r].q[q]; }
+function mockItems(sid){
+  const subs = SYS[sid].subjects.filter(x => x.ready); const total = subs.reduce((n, x) => n + x.count, 0); const n = Math.min(MOCK_N, total);
+  const alloc = subs.map(x => { const e = n * x.count / total; return {x, k: Math.floor(e), r: e - Math.floor(e)}; });
+  let left = n - alloc.reduce((t, a) => t + a.k, 0); alloc.slice().sort((p, q) => q.r - p.r).forEach(a => { if (left > 0){ a.k++; left--; } });
+  const items = []; alloc.forEach(a => shuffle(keysOf(a.x)).slice(0, a.k).forEach(k => items.push({s: a.x.id, k})));
+  return shuffle(items);
+}
+function mockHist(sid){ return store.get('famcq:v1:tests', []).filter(h => h.mock === sid); }
+function mockCard(s){
+  const subs = s.subjects.filter(x => x.ready); if (!subs.length) return '';
+  const total = subs.reduce((n, x) => n + x.count, 0), n = Math.min(MOCK_N, total);
+  const h = mockHist(s.id); const best = h.length ? Math.max(...h.map(t => pct(t.c, t.n))) : null;
+  return `<div class="mock tint" ${tintStyle(s.color)}>
+    <div class="t"><p class="eyebrow">USMLE-style mock exam</p><b>${esc(s.name)} block</b>
+      <small>${n} questions mixed from ${subs.length} subject${subs.length > 1 ? 's' : ''} · ${mmss(n * SECS)} block timer · scored at the end</small>
+      ${h.length ? `<small>Taken ${h.length}× · best <span class="${accP(best)}">${best}%</span> · last ${pct(h[0].c, h[0].n)}%</small>` : ''}</div>
+    <button class="btn solid" type="button" data-t="mock:${s.id}">Start mock →</button></div>`;
+}
+function startTest(items, label, o){
+  o = o || {}; const c = cfg();
+  items = items.filter(it => SUBJ[it.s] && SUBJ[it.s].ready); if (!items.length){ toast('No questions match that choice'); return; }
+  const timed = o.timed != null ? o.timed : c.timed, mode = o.mode || c.mode;
+  TEST = {id: 't' + Date.now(), at: Date.now(), label, mock: o.mock || null, items, ans: {}, x: {}, cur: 0, used: 0, seg: null, timed, limit: timed ? items.length * SECS : 0, mode, done: false};
+  saveTest(); window.scrollTo(0, 0);
+  if (location.hash.slice(1) !== 'test') location.hash = 'test'; else testView();
+}
+function customItems(){
+  const c = cfg(); const sel = c.subs.filter(id => SUBJ[id] && SUBJ[id].ready);
+  const p = []; sel.forEach(id => pool(id, c.src).forEach(k => p.push({s: id, k})));
+  const sys = [...new Set(sel.map(id => SUBJ[id].sys.name))];
+  let label = sel.length === 1 ? SUBJ[sel[0]].sys.name + ' · ' + SUBJ[sel[0]].name : sys.length === 1 ? sys[0] + ' · ' + sel.length + ' subjects' : sys.length + ' systems mixed';
+  if (c.src !== 'all') label += ' · ' + c.src;
+  return [shuffle(p).slice(0, c.n), label];
+}
+function armOr(el, run){
+  if (!(TEST && !TEST.done) || el.dataset.armed){ run(); return; }
+  el.dataset.armed = '1'; el.dataset.label = el.innerHTML; el.textContent = 'Tap again to replace your unfinished test'; el.classList.add('warn');
+  setTimeout(() => { if (el.isConnected && el.dataset.armed){ delete el.dataset.armed; el.innerHTML = el.dataset.label; el.classList.remove('warn'); } }, 4000);
+}
+function testView(keep){
+  setTheme('#2D4A9A'); crumbs([['First Aid',''],['Tests','test']]);
+  document.title = 'Tests · First Aid MCQ Bank';
+  if (!TEST) return testBuilder();
+  TEST.items = TEST.items.filter(it => SUBJ[it.s] && SUBJ[it.s].ready);
+  if (!TEST.items.length){ TEST = null; saveTest(); return testBuilder(); }
+  const ids = [...new Set(TEST.items.map(it => it.s))];
+  if (ids.every(id => cache[id])) return renderTest(keep);
+  $app.innerHTML = '<p class="loading">Loading test…</p>';
+  Promise.all(ids.map(id => loadData(SUBJ[id]))).then(() => renderTest(false)).catch(() => { $app.innerHTML = `<div class="empty"><h2>Questions didn't load</h2><p>Check your connection, then try again.</p><button class="btn solid" type="button" data-t="reload">Try again</button></div>`; });
+}
+function renderTest(keep, toPanel){
+  if (location.hash.slice(1) !== 'test' || !TEST) return;
+  const y = window.scrollY;
+  if (TEST.done) testResults(); else testRun();
+  if (keep) window.scrollTo(0, y);
+  if (toPanel){ const el = document.getElementById('question-panel'); if (el){ const top = el.getBoundingClientRect().top; if (top < 60 || top > window.innerHeight * .5) el.scrollIntoView({block: 'start'}); } }
+}
+function testBuilder(){
+  clearInterval(tTimer);
+  const c = cfg(); const sel = c.subs.filter(id => SUBJ[id] && SUBJ[id].ready);
+  const cnt = s => sel.reduce((t, id) => t + pool(id, s).length, 0);
+  const avail = cnt(c.src), n = Math.min(c.n, avail);
+  const srcs = [['all','All'],['unanswered','Unanswered'],['incorrect','Incorrect'],['flagged','Flagged']];
+  const hist = store.get('famcq:v1:tests', []);
+  const mocks = REG.systems.map(mockCard).join('');
+  $app.innerHTML = `
+  <section class="hero">
+    <p class="eyebrow">Tests</p>
+    <h1>Exam practice</h1>
+    <p class="lead">Take a USMLE-style block for a whole system, or build your own test from any subjects. Blocks run on a clock and are scored at the end.</p>
+  </section>
+  <div class="section-head"><h2>System mock exams</h2><span class="meta">40 questions · 60 minutes · mixed across the system's subjects</span></div>
+  <div class="mocks">${mocks || '<p class="bnote">Mock exams appear as systems go live.</p>'}</div>
+  <div class="section-head"><h2>Custom test</h2><span class="meta">Your own mix of subjects</span></div>
+  <div class="builder">
+    <section class="bstep"><h3>1. Subjects</h3>
+      <div class="bsys">${REG.systems.filter(s => s.subjects.some(x => x.ready)).map(s => { const rs = s.subjects.filter(x => x.ready); const on = rs.filter(x => sel.includes(x.id)).length;
+        return `<fieldset class="bgroup tint" ${tintStyle(s.color)}><legend><label><input type="checkbox" id="sys-${s.id}" data-sysall="${s.id}"${on === rs.length ? ' checked' : ''}${on && on < rs.length ? ' data-mixed="1"' : ''}> ${esc(s.name)}</label></legend>
+          <div class="bsubs">${rs.map(x => `<label class="bsub"><input type="checkbox" id="sub-${x.id}" data-subj="${x.id}"${sel.includes(x.id) ? ' checked' : ''}> ${esc(x.name)} <span class="mono">${pool(x.id, c.src).length}</span></label>`).join('')}</div></fieldset>`; }).join('')}
+      </div><p class="bnote">More systems appear here as their questions go live.</p>
+    </section>
+    <section class="bstep"><h3>2. Questions from</h3><div class="seg">${srcs.map(([k, l]) => `<button type="button" data-t="cfg:src:${k}" aria-pressed="${c.src === k}">${l} <span class="mono">${cnt(k)}</span></button>`).join('')}</div></section>
+    <section class="bstep"><h3>3. Number of questions</h3><div class="seg">${[10, 20, 40].map(v => `<button type="button" data-t="cfg:n:${v}" aria-pressed="${c.n === v}">${v}${v === 40 ? ' · full block' : ''}</button>`).join('')}</div></section>
+    <section class="bstep"><h3>4. Timing</h3><div class="seg"><button type="button" data-t="cfg:timed:1" aria-pressed="${c.timed}">Timed · 90 sec per question</button><button type="button" data-t="cfg:timed:0" aria-pressed="${!c.timed}">Untimed</button></div></section>
+    <section class="bstep"><h3>5. Answers</h3><div class="seg"><button type="button" data-t="cfg:mode:exam" aria-pressed="${c.mode === 'exam'}">Show at the end</button><button type="button" data-t="cfg:mode:tutor" aria-pressed="${c.mode === 'tutor'}">Show after each question</button></div></section>
+    <div class="bgo"><p>${!sel.length ? 'Pick at least one subject.' : !n ? 'No questions match. Pick more subjects or another source.' : `<b>${n} questions</b> from ${sel.length} subject${sel.length > 1 ? 's' : ''} · ${c.timed ? mmss(n * SECS) + ' on the clock' : 'untimed'} · answers ${c.mode === 'exam' ? 'at the end' : 'after each question'}${n < c.n ? ` <span class="bwarn">(only ${avail} available)</span>` : ''}`}</p>
+      <button class="btn solid" type="button" data-t="start"${n ? '' : ' disabled'}>Start test →</button></div>
+  </div>
+  ${hist.length ? `<div class="section-head"><h2>Past tests</h2><span class="meta">Most recent first</span></div>
+  <div class="ttable">${hist.slice(0, 12).map(h => `<div class="trow"><span class="tname"><span>${esc(h.label)}</span></span><span class="tnote">${new Date(h.at).toLocaleDateString(undefined, {day: 'numeric', month: 'short'})} · ${h.timed ? mmss(h.used) + ' used' : 'untimed'} · ${h.mode === 'exam' ? 'scored at end' : 'tutor'}</span><span class="tmeta"><span class="tnum ${accP(pct(h.c, h.n))}">${pct(h.c, h.n)}%<i class="sm"> score</i></span><span class="tnum"><b>${h.c}</b> / ${h.n}<i class="sm"> correct</i></span><span class="tnum">${h.mock ? 'Mock' : 'Custom'}</span></span></div>`).join('')}</div>` : ''}`;
+  document.querySelectorAll('[data-mixed]').forEach(el => el.indeterminate = true);
+}
+function builderChange(el){
+  const c = cfg();
+  if (el.dataset.sysall){ const ids = SYS[el.dataset.sysall].subjects.filter(x => x.ready).map(x => x.id); c.subs = el.checked ? [...new Set(c.subs.concat(ids))] : c.subs.filter(id => !ids.includes(id)); }
+  else { const id = el.dataset.subj; c.subs = el.checked ? [...new Set(c.subs.concat([id]))] : c.subs.filter(v => v !== id); }
+  setCfg(c); const y = window.scrollY, fid = el.id; testBuilder(); window.scrollTo(0, y); const f = document.getElementById(fid); if (f) f.focus();
+}
+function navCells(cmd, cur, state){
+  return TEST.items.map((t2, j) => { const fl = isFl(flagsOf(t2.s), t2.k); const s = state(j);
+    return `<button class="cell${s.cls}${fl ? ' fl' : ''}" type="button" data-t="${cmd}:${j}" aria-label="Question ${j + 1}${s.lab}${fl ? ', flagged' : ''}" aria-current="${j === cur}">${j + 1}</button>`; }).join('');
+}
+function optList(item, sel, revealed, xs, cmd){
+  return `<ol class="opts">${item.o.map((o, j) => { let cls = '', mk = ''; const struck = xs.includes(j);
+    if (revealed){ if (j === item.a){ cls = 'is-ok'; mk = sel === j ? 'Your answer · Correct' : 'Correct answer'; } else if (j === sel){ cls = 'is-bad'; mk = 'Your answer'; } }
+    else { if (sel === j){ cls = 'is-sel'; mk = 'Selected'; } if (struck) cls += ' is-x'; }
+    return `<li class="${cls}"><div class="orow"><button class="opt" type="button" data-t="${cmd}:${j}"${revealed ? ' disabled' : ''}><span class="let">${LET[j]}</span><span class="otxt">${fmt(o)}</span><span class="mk">${mk}</span></button>${revealed ? '' : `<button class="xbtn" type="button" data-t="x:${j}" aria-pressed="${struck}" aria-label="${struck ? 'Restore' : 'Strike out'} option ${LET[j]}" title="${struck ? 'Restore option' : 'Strike out option'}">${struck ? '↺' : '✕'}</button>`}</div><div class="why">${fmt(item.e[j])}</div></li>`; }).join('')}</ol>`;
+}
+function feedbackBox(item, sel, x){
+  return `<div class="feedback"><span class="v ${sel === item.a ? 'ok' : 'bad'}">${sel == null ? 'Not answered. The answer is ' + LET[item.a] + '.' : sel === item.a ? '✓ Correct' : '✕ Not quite. The answer is ' + LET[item.a] + '.'}</span><span class="src">${esc(x.sys.name)} · ${esc(x.name)} · Revise: First Aid 2026, p. ${esc(item.p)}${item.k ? ' · ' + esc(item.k) : ''}</span></div>`;
+}
+function testRun(){
+  if (!TEST.seg) TEST.seg = Date.now();
+  clearInterval(tTimer); tTimer = setInterval(tick, 1000);
+  const N = TEST.items.length, i = TEST.cur, it = TEST.items[i], item = itemQ(it), x = SUBJ[it.s];
+  const sel = TEST.ans[i], tutor = TEST.mode === 'tutor', revealed = tutor && sel != null, xs = (TEST.x && TEST.x[i]) || [];
+  const nAns = Object.keys(TEST.ans).length;
+  const cells = navCells('go', i, j => { const a = TEST.ans[j] != null; return {cls: a ? (tutor ? (TEST.ans[j] === itemQ(TEST.items[j]).a ? ' ok' : ' bad') : ' done') : '', lab: a ? ', answered' : ', unanswered'}; });
+  $app.innerHTML = `
+  <div class="exhead"><p class="eyebrow">${TEST.mock ? 'USMLE-style mock exam' : 'Custom test'} · ${tutor ? 'answers after each question' : 'scored at the end'}</p><h2>${esc(TEST.label)}</h2></div>
+  <section class="exam tint" ${tintStyle(TEST.mock ? SYS[TEST.mock].color : '#2D4A9A')} id="question-panel">
+    <div class="exbar">
+      <span class="exitem">Item ${i + 1} of ${N}</span>
+      ${flagBtn(it.s, it.k, true)}
+      <span class="exarrows"><button class="btn" type="button" data-t="prev"${i === 0 ? ' disabled' : ''} aria-label="Previous question">←</button><button class="btn" type="button" data-t="next"${i === N - 1 ? ' disabled' : ''} aria-label="Next question">→</button></span>
+      <span class="exclock" id="tclockwrap"><small>${TEST.timed ? 'Block time remaining' : 'Time used'}</small><b id="tclock">${clockTxt()}</b></span>
+      <button class="btn exend" type="button" data-t="end">End block</button>
+    </div>
+    <div class="exbody">
+      <nav class="exnav" aria-label="Question navigator"><p class="exnav-h">${nAns} / ${N} answered</p><div class="exgrid">${cells}</div></nav>
+      <div class="exq">
+        <details class="qmap exnav-sm"><summary>Question map · ${nAns} of ${N} answered</summary><div class="grid">${cells}</div></details>
+        <div class="qbody${revealed ? ' answered' : ''}">
+          ${revealed ? `<p class="qnum">${esc(x.sys.name)} · ${esc(x.name)}</p>` : ''}
+          <p class="stem">${fmt(item.s)}</p>
+          ${optList(item, sel, revealed, xs, 'opt')}
+          ${revealed ? feedbackBox(item, sel, x) : ''}
+        </div>
+        <nav class="qnav"><button class="btn" type="button" data-t="prev"${i === 0 ? ' disabled' : ''}>← Previous</button><button class="btn solid" type="button" data-t="${i === N - 1 ? 'end' : 'next'}">${i === N - 1 ? 'End block →' : 'Next →'}</button></nav>
+      </div>
+    </div>
+  </section>
+  <p class="hint">Keys: A–E to answer · ← → to move · F to flag · ✕ strikes out an option</p>`;
+  tick();
+}
+function tick(){
+  if (!TEST || TEST.done || location.hash.slice(1) !== 'test'){ clearInterval(tTimer); return; }
+  if (TEST.timed && elapsed() >= TEST.limit){ finishTest(true); return; }
+  const el = document.getElementById('tclock'); if (el) el.textContent = clockTxt();
+  const w = document.getElementById('tclockwrap'); if (w) w.classList.toggle('low', TEST.timed && TEST.limit - elapsed() < 300);
+}
+function endArm(el){
+  const left = TEST.items.length - Object.keys(TEST.ans).length;
+  if (!left && el.classList.contains('solid')) return finishTest(false);
+  if (!el.dataset.armed){
+    el.dataset.armed = '1'; el.dataset.label = el.innerHTML; el.textContent = left ? `End with ${left} unanswered? Tap again` : 'Tap again to end and score'; el.classList.add('warn');
+    setTimeout(() => { if (el.isConnected && el.dataset.armed){ delete el.dataset.armed; el.innerHTML = el.dataset.label; el.classList.remove('warn'); } }, 4000); return;
+  }
+  finishTest(false);
+}
+function finishTest(timeUp){
+  fold(); TEST.done = true; TEST.rv = 0;
+  let c = 0; const touched = new Set();
+  TEST.items.forEach((it, i) => { const item = itemQ(it); const v = TEST.ans[i]; if (v == null || !item) return; const ok = v === item.a; if (ok) c++;
+    const st = store.get(skey(it.s), {a:{}}); st.a = st.a || {}; if (!st.a[it.k]){ st.a[it.k] = [v, ok ? 1 : 0]; store.set(skey(it.s), st); touched.add(SUBJ[it.s].sys.id); } });
+  TEST.c = c; saveTest();
+  const hist = store.get('famcq:v1:tests', []).filter(h => h.id !== TEST.id);
+  hist.unshift({id: TEST.id, at: TEST.at, label: TEST.label, mock: TEST.mock, n: TEST.items.length, c, used: Math.round(TEST.used), timed: TEST.timed, mode: TEST.mode});
+  store.set('famcq:v1:tests', hist.slice(0, 40));
+  touched.forEach(sid => Sync.queue(sid, 500)); Sync.queueTests();
+  if (timeUp) toast("Time's up. Your block was scored.");
+  window.scrollTo(0, 0); renderTest(false);
+}
+function testResults(){
+  clearInterval(tTimer);
+  const N = TEST.items.length, c = TEST.c || 0, answered = Object.keys(TEST.ans).length;
+  const per = {}; TEST.items.forEach((it, j) => { const p = per[it.s] = per[it.s] || {n: 0, c: 0}; p.n++; const item = itemQ(it); if (item && TEST.ans[j] === item.a) p.c++; });
+  const i = Math.max(0, Math.min(N - 1, TEST.rv || 0)), it = TEST.items[i], item = itemQ(it), x = SUBJ[it.s], sel = TEST.ans[i];
+  const wrong = TEST.items.filter((t2, j) => TEST.ans[j] !== itemQ(t2).a).length;
+  const cells = navCells('rv', i, j => { const a = TEST.ans[j]; const ok = a === itemQ(TEST.items[j]).a; return {cls: a == null ? '' : ok ? ' ok' : ' bad', lab: a == null ? ', unanswered' : ok ? ', correct' : ', incorrect'}; });
+  const mh = TEST.mock ? mockHist(TEST.mock) : [];
+  $app.innerHTML = `
+  <section class="hero">
+    <p class="eyebrow">${TEST.mock ? 'Mock exam results' : 'Test results'} · ${new Date(TEST.at).toLocaleString(undefined, {day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit'})}</p>
+    <h1>${esc(TEST.label)}</h1>
+    <div class="kpis">
+      <div class="kpi"><span class="v ${accP(pct(c, N))}">${pct(c, N)}%</span><span class="l">Score · ${c} of ${N} correct</span></div>
+      <div class="kpi"><span class="v">${answered}<small>/ ${N}</small></span><span class="l">Answered${N - answered ? ` · ${N - answered} left blank` : ''}</span></div>
+      <div class="kpi"><span class="v">${mmss(TEST.used)}</span><span class="l">Time used${TEST.timed ? ` of ${mmss(TEST.limit)}` : ''} · ${answered ? mmss(TEST.used / answered) : '—'} per question</span></div>
+      ${mh.length > 1 ? `<div class="kpi"><span class="v">${Math.max(...mh.map(t => pct(t.c, t.n)))}%</span><span class="l">Best of ${mh.length} ${esc(SYS[TEST.mock].name)} mocks</span></div>` : ''}
+    </div>
+  </section>
+  <div class="section-head"><h2>By subject</h2><span class="meta">Where you lost marks</span></div>
+  <div class="ttable">${Object.keys(per).map(id => { const p = per[id], s = SUBJ[id]; return `<div class="trow tint" ${tintStyle(s.sys.color)}><span class="tname"><i class="chip" aria-hidden="true"></i><span>${esc(s.sys.name)} · ${esc(s.name)}</span></span><span class="tbar"><span class="meter" aria-hidden="true"><i style="width:${pct(p.c, p.n)}%"></i></span></span><span class="tmeta"><span class="tnum"><b>${p.c}</b> / ${p.n}<i class="sm"> correct</i></span><span class="tnum ${accP(pct(p.c, p.n))}">${pct(p.c, p.n)}%</span><span class="tnum"></span></span></div>`; }).join('')}</div>
+  <div class="section-head"><h2>Review answers</h2><span class="meta">Tap a number to see its explanation</span></div>
+  <section class="panel tint" ${tintStyle(x.sys.color)} id="question-panel">
+    <div class="qmap"><div class="grid">${cells}</div><p class="legend"><span><i class="l-ok"></i>Correct</span><span><i class="l-bad"></i>Incorrect</span><span><i></i>Blank</span><span><i class="l-fl"></i>Flagged</span></p></div>
+    <div class="qbody answered">
+      <div class="qtop"><p class="qnum">QUESTION ${i + 1} OF ${N}</p>${flagBtn(it.s, it.k)}</div>
+      <p class="stem">${fmt(item.s)}</p>
+      ${optList(item, sel, true, [], 'none')}
+      ${feedbackBox(item, sel, x)}
+    </div>
+    <nav class="qnav"><button class="btn" type="button" data-t="rv:${i - 1}"${i === 0 ? ' disabled' : ''}>← Previous</button><button class="btn solid" type="button" data-t="rv:${i + 1}"${i === N - 1 ? ' disabled' : ''}>Next →</button></nav>
+  </section>
+  <div class="foot"><button class="btn" type="button" data-t="new">Back to tests</button>${TEST.mock ? `<button class="btn" type="button" data-t="mock:${TEST.mock}">New ${esc(SYS[TEST.mock].name)} mock</button>` : ''}${wrong ? `<button class="btn solid" type="button" data-t="retake">Retake the ${wrong} you missed →</button>` : ''}</div>`;
+}
+function testAction(a, el){
+  const p = a.split(':'), cmd = p[0];
+  if (cmd === 'cfg'){ const c = cfg(); c[p[1]] = p[1] === 'n' ? +p[2] : p[1] === 'timed' ? p[2] === '1' : p[2]; setCfg(c); const y = window.scrollY; testBuilder(); window.scrollTo(0, y); return; }
+  if (cmd === 'start') return armOr(el, () => { const [it, l] = customItems(); startTest(it, l); });
+  if (cmd === 'mock') return armOr(el, () => startTest(mockItems(p[1]), SYS[p[1]].name + ' mock exam', {mode: 'exam', timed: true, mock: p[1]}));
+  if (cmd === 'flagtest') return armOr(el, () => { const sy = p[1] && SYS[p[1]]; const ids = sy ? sy.subjects.filter(x => x.ready).map(x => x.id) : readyIds(); const items = []; ids.forEach(id => flaggedKeys(id).forEach(k => items.push({s: id, k}))); startTest(shuffle(items), sy ? sy.name + ' · flagged questions' : 'Flagged questions', {mode: 'tutor', timed: false}); });
+  if (cmd === 'open'){ const id = p[1], k = p[2]; const [r, q] = k.split('-').map(Number); const st = store.get(skey(id), {a:{}}); st.last = {r, q, t: Date.now()}; store.set(skey(id), st); location.hash = id; return; }
+  if (cmd === 'reload') return testView();
+  if (!TEST) return;
+  if (cmd === 'new'){ TEST = null; saveTest(); window.scrollTo(0, 0); testView(); return; }
+  if (cmd === 'retake'){ const items = TEST.items.filter((t2, j) => TEST.ans[j] !== itemQ(t2).a).map(t2 => ({s: t2.s, k: t2.k})); startTest(shuffle(items), 'Retake · ' + TEST.label.replace(/^Retake · /, ''), {mode: TEST.mode, timed: TEST.timed}); return; }
+  if (cmd === 'rv'){ TEST.rv = +p[1]; saveTest(); renderTest(true, true); return; }
+  if (TEST.done) return;
+  if (cmd === 'opt'){ pickTest(+p[1]); return; }
+  if (cmd === 'x'){ const j = +p[1]; TEST.x = TEST.x || {}; const xs = TEST.x[TEST.cur] = TEST.x[TEST.cur] || []; const at = xs.indexOf(j); if (at >= 0) xs.splice(at, 1); else { xs.push(j); if (TEST.ans[TEST.cur] === j && TEST.mode === 'exam') delete TEST.ans[TEST.cur]; } saveTest(); renderTest(true); return; }
+  if (cmd === 'go'){ TEST.cur = +p[1]; saveTest(); renderTest(true, true); return; }
+  if (cmd === 'prev' || cmd === 'next'){ TEST.cur = Math.max(0, Math.min(TEST.items.length - 1, TEST.cur + (cmd === 'next' ? 1 : -1))); saveTest(); renderTest(true, true); return; }
+  if (cmd === 'end') return endArm(el);
+}
+function pickTest(j){
+  const i = TEST.cur; if (TEST.mode === 'tutor' && TEST.ans[i] != null) return;
+  if (TEST.x && TEST.x[i]){ const at = TEST.x[i].indexOf(j); if (at >= 0) TEST.x[i].splice(at, 1); }
+  TEST.ans[i] = j; saveTest(); renderTest(true);
+}
+function testCard(){ const run = TEST && !TEST.done; return `<a class="mini tint" href="#test"><span class="t"><b>Tests &amp; mock exams</b><small>${run ? `Test in progress · ${Object.keys(TEST.ans).length} of ${TEST.items.length} answered` : 'USMLE-style system blocks, or your own timed mix.'}</small></span><span class="go">${run ? 'Resume →' : 'Start →'}</span></a>`; }
+function flagCard(){ const n = flagCount(); return `<a class="mini tint" href="#flagged"><span class="t"><b>Flagged questions</b><small>${n ? `${n} saved for review` : 'Flag any question to save it here.'}</small></span><span class="go">${n ? 'Review →' : 'Open →'}</span></a>`; }
+document.addEventListener('click', e => {
+  const f = e.target.closest('[data-flag]'); if (f){ toggleFlag(f.dataset.flag); return; }
+  const t = e.target.closest('[data-t]'); if (t && !t.disabled) testAction(t.dataset.t, t);
+});
+document.addEventListener('change', e => { const c = e.target.closest('[data-subj],[data-sysall]'); if (c) builderChange(c); });
+document.addEventListener('keydown', e => {
+  if (location.hash.slice(1) !== 'test' || !TEST || e.metaKey || e.ctrlKey || e.altKey) return;
+  if (/INPUT|TEXTAREA|SELECT/.test(document.activeElement && document.activeElement.tagName)) return;
+  const k = e.key.toLowerCase();
+  if (TEST.done){ if (e.key === 'ArrowRight' || e.key === 'ArrowLeft'){ const N = TEST.items.length; TEST.rv = Math.max(0, Math.min(N - 1, (TEST.rv || 0) + (e.key === 'ArrowRight' ? 1 : -1))); saveTest(); renderTest(true, true); e.preventDefault(); } return; }
+  const idx = 'abcde'.indexOf(k) >= 0 ? 'abcde'.indexOf(k) : '12345'.indexOf(k);
+  if (idx >= 0 && k.length === 1){ pickTest(idx); e.preventDefault(); }
+  else if (e.key === 'ArrowRight'){ testAction('next'); e.preventDefault(); }
+  else if (e.key === 'ArrowLeft'){ testAction('prev'); e.preventDefault(); }
+  else if (k === 'f'){ const it = TEST.items[TEST.cur]; toggleFlag(it.s + '|' + it.k); e.preventDefault(); }
+});
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'hidden') fold();
+  else if (location.hash.slice(1) === 'test' && TEST && !TEST.done && !TEST.seg){ TEST.seg = Date.now(); clearInterval(tTimer); tTimer = setInterval(tick, 1000); }
+});
+window.addEventListener('pagehide', fold);
+
+/* ---------- cross-device sync (signed-in Claude accounts) ---------- */
+const Sync = (function(){
+  let col = null, ready = false, timer = null, testsDirty = false; const pending = new Set(), busy = {};
+  const el = document.getElementById('sync');
+  function status(st){
+    const txt = {local:'Saved here', syncing:'Syncing…', synced:'Synced', error:'Sync paused'}[st];
+    const tip = {local:'Progress is saved in this browser only', syncing:'Saving to your Claude account', synced:'Progress is saved to your Claude account and follows you to every device where you are signed in', error:'Could not reach your account; progress is still saved in this browser'}[st];
+    el.dataset.state = st; el.querySelector('.lbl').textContent = txt; el.title = tip;
+  }
+  function entry(id){ const st = store.get(skey(id), null); return st ? {a: st.a || {}, last: st.last || null, rv: st.rv || 0, fl: st.fl || {}} : null; }
+  function sysDoc(sid){
+    const out = {};
+    SYS[sid].subjects.forEach(x => { const e = entry(x.id); if (e && (Object.keys(e.a).length || e.last || e.rv || Object.keys(e.fl).length)) out[x.id] = e; });
+    return {s: out, u: Date.now()};
+  }
+  function merge(id, R){
+    const L = entry(id) || {a:{}, last:null, rv:0}; let M;
+    const lrv = L.rv || 0, rrv = R.rv || 0;
+    if (rrv > lrv) M = {a: Object.assign({}, R.a || {}), rv: rrv};
+    else if (lrv > rrv) M = {a: Object.assign({}, L.a), rv: lrv};
+    else M = {a: Object.assign({}, L.a, R.a || {}), rv: lrv};
+    const lt = (L.last && L.last.t) || 0, rt = (R.last && R.last.t) || 0;
+    M.last = rt > lt ? R.last : L.last;
+    const lf = L.fl || {}, rf = R.fl || {}; M.fl = Object.assign({}, lf);
+    Object.keys(rf).forEach(k => { if (!M.fl[k] || (rf[k][1] || 0) > (M.fl[k][1] || 0)) M.fl[k] = rf[k]; });
+    const changedLocal = JSON.stringify(M.a) !== JSON.stringify(L.a) || M.rv !== lrv || M.last !== L.last || JSON.stringify(M.fl) !== JSON.stringify(lf);
+    const changedRemote = JSON.stringify(M.a) !== JSON.stringify(R.a || {}) || M.rv !== rrv || JSON.stringify(M.fl) !== JSON.stringify(rf);
+    if (changedLocal) store.set(skey(id), M);
+    return {changedLocal, changedRemote};
+  }
+  async function pull(){
+    if (!col) return;
+    status('syncing');
+    try {
+      const snap = await col.get(); let anyLocal = false, sawTests = false; const dirty = new Set(); const seen = new Set();
+      snap.docs.forEach(d => {
+        const body = d.data() || {};
+        if (d.id === 'meta'){ const ml = body.last, ll = store.get('famcq:v1:last', null); if (ml && (!ll || (ml.t||0) > (ll.t||0))) store.set('famcq:v1:last', ml); return; }
+        if (d.id === 'tests'){ sawTests = true; const L = store.get('famcq:v1:tests', []), ids = new Set(L.map(h => h.id)); const add = (body.list || []).filter(h => h && !ids.has(h.id));
+          const M = L.concat(add).sort((p, q) => q.at - p.at).slice(0, 40); if (add.length){ store.set('famcq:v1:tests', M); anyLocal = true; } if (M.length > (body.list || []).length) testsDirty = true; return; }
+        if (!d.id.startsWith('sys-')) return; const sid = d.id.slice(4); if (!SYS[sid]) return; seen.add(sid);
+        Object.entries(body.s || {}).forEach(([id, R]) => { if (!SUBJ[id]) return; const r = merge(id, R); if (r.changedLocal) anyLocal = true; if (r.changedRemote) dirty.add(sid); });
+        SYS[sid].subjects.forEach(x => { if (!(body.s || {})[x.id] && entry(x.id)) dirty.add(sid); });
+      });
+      REG.systems.forEach(sy => { if (!seen.has(sy.id) && sy.subjects.some(x => entry(x.id))) dirty.add(sy.id); });
+      status('synced');
+      if (!sawTests && store.get('famcq:v1:tests', []).length) testsDirty = true;
+      dirty.forEach(sid => queue(sid, 0)); if (testsDirty) queueTests();
+      if (anyLocal) refresh();
+    } catch(e){ status('error'); }
+  }
+  function refresh(){
+    if (Q){ const st = store.get(skey(Q.s.id), {a:{}}); Q.st = Object.assign({a:{}}, st); drawRounds(); drawPanel(false); }
+    else { const y = window.scrollY; route(true); window.scrollTo(0, y); }
+  }
+  function queueTests(){ if (!ready) return; testsDirty = true; clearTimeout(timer); timer = setTimeout(flush, 800); }
+  function queue(sid, delay){
+    if (!ready) return; pending.add(sid); clearTimeout(timer); timer = setTimeout(flush, delay == null ? 1500 : delay);
+  }
+  async function flush(){
+    const list = [...pending]; pending.clear(); if (!list.length && !testsDirty) return; status('syncing');
+    let failed = false;
+    for (const sid of list){
+      if (busy[sid]){ pending.add(sid); continue; }
+      busy[sid] = true;
+      try { await col.doc('sys-' + sid).set(sysDoc(sid)); }
+      catch(e){ failed = true; if (e && (e.code === 'invalid_argument' || e.code === 'revoked' || e.code === 'not_granted')){ ready = false; col = null; status('local'); busy[sid] = false; return; } pending.add(sid); }
+      busy[sid] = false;
+    }
+    try { const last = store.get('famcq:v1:last', null); if (last && col) await col.doc('meta').set({last}); } catch(e){}
+    if (testsDirty && col){ testsDirty = false; try { await col.doc('tests').set({list: store.get('famcq:v1:tests', []).slice(0, 40)}); } catch(e){ testsDirty = true; failed = true; } }
+    if (pending.size || testsDirty){ timer = setTimeout(flush, failed ? 6000 : 1500); }
+    status(failed ? 'error' : 'synced');
+  }
+  async function init(){
+    try {
+      if (!window.claude || typeof window.claude.use !== 'function') return;
+      const [db, user] = await Promise.all([window.claude.use('db'), window.claude.use('user')]);
+      if (!db || !user) return;
+      let canWrite = null; try { canWrite = await user.can('data.write'); } catch(e){}
+      if (canWrite === false) return;
+      const uid = await user.id(); if (!uid) return;
+      col = db.collection('data/users/' + uid); ready = true;
+      await pull();
+      let lastPull = Date.now();
+      document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && Date.now() - lastPull > 20000){ lastPull = Date.now(); pull(); } });
+    } catch(e){ status('local'); }
+  }
+  return {init, queue, queueTests};
+})();
+
+function route(keep){
+  const h = decodeURIComponent(location.hash.slice(1));
+  Q = null; fold();
+  if (SUBJ[h]) quiz(SUBJ[h]); else if (SYS[h]) folder(SYS[h]); else if (h === 'progress') progressView(); else if (h === 'test') testView(keep); else if (h === 'flagged') flaggedView(keep); else if (h.startsWith('flagged-') && SYS[h.slice(8)]) flaggedView(keep, h.slice(8)); else hub();
+  [['navProgress','progress'],['navTest','test']].forEach(([id, r]) => { const n = document.getElementById(id); if (h === r) n.setAttribute('aria-current','page'); else n.removeAttribute('aria-current'); });
+  if (!keep) window.scrollTo(0,0);
+}
+window.addEventListener('hashchange', () => route());
+route();
+Sync.init();
+})();
+</script>
+
+</body>
+</html>
